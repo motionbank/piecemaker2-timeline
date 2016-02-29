@@ -9,7 +9,8 @@ var GLOBAL = {
   height: 0,
   cachedWidth: 0,
   cachedHeight: 0,
-  apiClient : null
+  apiClient : null,
+    markerTypes : null
 }
 
 var app = {
@@ -69,15 +70,29 @@ jQuery( function ($) {
                 appConfig.video_streamer.base_path + '/' +
                 video.fields.title + '.mp4' );
 
+            var types = {};
+
             api.listEventsForTimespan(
                 params.group,
                 video.utc_timestamp,
                 video.utc_timestamp.getTime()+duration,
                 'intersect',
                 function(events){
+
                     var videoTime = video.utc_timestamp.getTime();
+
                     $.map(events,function(e){
+
+                        if (e.id === video.id ) return;
+
+                        if ( (e.type in types) === false ) {
+                            types[e.type] = 1;
+                        } else {
+                            types[e.type]++;
+                        }
+
                         var start = e.utc_timestamp.getTime()-videoTime;
+
                         markerData.push({
                             start: parseInt( start, 10 ),
                             end: parseInt( e.duration > 0 ? (start + (e.duration*1000)) : start, 10 ),
@@ -86,6 +101,9 @@ jQuery( function ($) {
                             data : e
                         });
                     });
+
+                    GLOBAL.markerTypes = types;
+
                     finishInit();
                 });
         });
