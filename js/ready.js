@@ -36,55 +36,71 @@ jQuery( function ($) {
     // see comment at foot of document for structure
     var markerData = [];
 
-    if ( params.group && params.context ) {
-        api.getEvent(params.group,params.context,function(video){
+    $.ajax({
+        url: appConfig.settings+'/'+params.group+'/settings.json',
+        success: function (data) {
+            appConfig.media = data.media;
+            startInit();
+        },
+        error : function (err) {
+            console.log('Unable to load settings',err);
+            startInit();
+        }
+    });
 
-            var duration = video.duration * 1000;
-            GLOBAL.duration = duration;
+    var startInit = function () {
 
-            app.video = new VideoComponent(
-                appConfig.video_streamer.host +
-                appConfig.video_streamer.base_path + '/' +
-                video.fields.title + '.mp4' );
+        if (params.group && params.context) {
+            api.getEvent(params.group, params.context, function (video) {
 
-            var types = {};
+                var duration = video.duration * 1000;
+                GLOBAL.duration = duration;
 
-            api.listEventsForTimespan(
-                params.group,
-                video.utc_timestamp,
-                video.utc_timestamp.getTime()+duration,
-                'intersect',
-                function(events){
+                app.video = new VideoComponent(
+                    'http://'+
+                    appConfig.media.host +
+                    appConfig.media.base_url + '/' +
+                    (video.fields['local-file'] || (video.fields.title +'.mp4')) );
 
-                    var videoTime = video.utc_timestamp.getTime();
+                var types = {};
 
-                    $.map(events,function(e){
+                api.listEventsForTimespan(
+                    params.group,
+                    video.utc_timestamp,
+                    video.utc_timestamp.getTime() + duration,
+                    'intersect',
+                    function (events) {
 
-                        if (e.id === video.id ) return;
+                        var videoTime = video.utc_timestamp.getTime();
 
-                        if ( (e.type in types) === false ) {
-                            types[e.type] = 1;
-                        } else {
-                            types[e.type]++;
-                        }
+                        $.map(events, function (e) {
 
-                        var start = e.utc_timestamp.getTime()-videoTime;
-                        e.context_time = videoTime;
+                            if (e.id === video.id) return;
 
-                        markerData.push({
-                            start: parseInt( start, 10 ),
-                            end: parseInt( e.duration > 0 ? (start + (e.duration*1000)) : start, 10 ),
-                            label: e.fields.title || e.fields.description || 'Untitled',
-                            type: e.type,
-                            data : e
+                            if ((e.type in types) === false) {
+                                types[e.type] = 1;
+                            } else {
+                                types[e.type]++;
+                            }
+
+                            var start = e.utc_timestamp.getTime() - videoTime;
+                            e.context_time = videoTime;
+
+                            markerData.push({
+                                start: parseInt(start, 10),
+                                end: parseInt(e.duration > 0 ? (start + (e.duration * 1000)) : start, 10),
+                                label: e.fields.title || e.fields.description || 'Untitled',
+                                type: e.type,
+                                data: e
+                            });
                         });
+
+                        GLOBAL.markerTypes = types;
+
+                        finishInit();
                     });
-
-                    GLOBAL.markerTypes = types;
-
-                    finishInit();
-                });
-        });
+            });
+        }
     }
 
     var finishInit = function () {
