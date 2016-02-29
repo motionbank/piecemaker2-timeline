@@ -1,0 +1,92 @@
+.marker.titel.is-focused .label,
+.marker.titel.is-selected .handle,
+#controls .button.titel,
+.marker.titel .background {
+  background-color: #ff4c3b;
+}
+
+.marker.technik.is-focused .label,
+.marker.technik.is-selected .handle,
+#controls .button.technik,
+.marker.technik .background {
+  background-color: #ffa700;
+}
+
+.marker.kommentar.is-focused .label,
+.marker.kommentar.is-selected .handle,
+#controls .button.kommentar,
+.marker.kommentar .background {
+  background-color: #5b95fc;
+}
+
+.marker.asset.is-focused .label,
+.marker.asset.is-selected .handle,
+#controls .button.asset,
+.marker.asset .background {
+  background-color: #60c458;
+}
+
+.marker.person.is-focused .label,
+.marker.person.is-selected .handle,
+#controls .button.person,
+.marker.person .background {
+  background-color: #d175c2;
+}
+
+.marker.ort.is-focused .label,
+.marker.ort.is-selected .handle,
+#controls .button.ort,
+.marker.ort .background {
+  background-color: #9e7a60;
+}
+
+.marker.referenz.is-focused .label,
+.marker.referenz.is-selected .handle,
+#controls .button.referenz,
+.marker.referenz .background {
+  background-color: #989898;
+}
+
+
+
+.marker.titel:not(.is-focused) .label,
+.marker.titel .background {
+  color: #ff4c3b;
+}
+
+.marker.technik:not(.is-focused) .label,
+.marker.technik .background {
+  color: #ffa700;
+}
+
+.marker.kommentar:not(.is-focused) .label,
+.marker.kommentar .background {
+  color: #5b95fc;
+}
+
+.marker.asset:not(.is-focused) .label,
+.marker.asset .background {
+  color: #60c458;
+}
+
+.marker.person:not(.is-focused) .label,
+.marker.person .background {
+  color: #d175c2;
+}
+
+.marker.ort:not(.is-focused) .label,
+.marker.ort .background {
+  color: #9e7a60;
+}
+
+.marker.referenz:not(.is-focused) .label,
+.marker.referenz .background {
+  color: #989898;
+}
+
+
+/*.marker.technik:not(.is-selected):hover .background {
+  background-color: #402900;
+  border-right-color: #402900;
+  border-left-color: #402900;
+}*/

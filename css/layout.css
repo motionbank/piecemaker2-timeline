@@ -1,0 +1,47 @@
+/*.c1, .c1w {
+  width: 100px;
+}
+
+.c2, .c2w {
+  width: 240px;
+}
+
+.c3, .c3w {
+  width: 380px;
+}
+
+.c4, .c4w {
+  width: 520px;
+}
+
+.c5, .c5w {
+  width: 660px;
+}
+
+.flc {
+  font-size: 0 !important;
+}
+
+.flc > * {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.c1, .c2, .c3, .c4, .c5 {
+  margin: 0 40px 36px 0;
+}
+
+.c1w, .c2w, .c3w, .c4w, .c5w {
+  margin-right: 0 !important;
+}
+
+.tile {
+  margin-top: 0px;
+  margin-right: 40px;
+  margin-bottom: 36px;
+  margin-left: 0px;
+  font-size: 18px;
+  line-height: 1.4em;
+  text-align: left;
+}
+*/

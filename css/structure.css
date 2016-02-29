@@ -1,0 +1,41 @@
+body {
+  padding: 20px;
+  line-height: 1.4em;
+  font-family: Helvetica;
+}
+
+xmp {
+  font-family: inherit;
+  margin: 0;
+}
+
+.class {
+  border: 1px solid black;
+  padding: 20px;
+  margin-bottom: 20px;
+  -webkit-box-shadow: 0 0 10px grey;
+  -moz-box-shadow: 0 0 10px grey;
+  box-shadow: 0 0 10px grey;
+  background: transparent;
+}
+
+.class.comp {
+  background: rgba(255,200,200,0.4);
+}
+
+.class-head {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.class > *:last-child {
+  margin-bottom: 0;
+}
+
+.global {
+  margin-bottom: 20px;
+}
+
+.params {
+  font-weight: normal;
+}

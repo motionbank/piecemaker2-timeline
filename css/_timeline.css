@@ -1,0 +1,360 @@
+/* * * * * * * * * * * * * * * * * * * * * 
+ SHOW AND HIDE ELEMENTS
+ * * * * * * * * * * * * * * * * * * * * */
+
+.timeline-component.timecode-handle-dragging .timecode-controls .timecode-position-label,
+.timeline-component.navigation-dragging .timeline-graph .timecode-position-label,
+.timeline-component.is-focused .timeline-graph.is-focused .timecode-position-label,
+.timeline-component.is-focused .timeline-graph.is-focused .graph-cursor,
+.timeline-component.navigation-dragging .timeline-graph .graph-cursor,
+.timeline-component.navigation-dragging .navigation-cursor,
+.timeline-component.navigation-dragging .navigation-position-label,
+.timeline-navigation.is-focused .navigation-cursor,
+.timeline-navigation.is-focused .navigation-position-label {
+  display: block;
+}
+
+.timeline-component.navigation-handle-dragging .timeline-graph .graph-cursor,
+.timeline-component.navigation-handle-dragging .timecode-controls .timecode-position-label,
+.timeline-component.timecode-handle-dragging .timecode-playhead-shadow,
+.timeline-component.timecode-handle-dragging .timeline-graph .graph-cursor,
+.timeline-component.timecode-handle-dragging .navigation-cursor,
+.timeline-component.timecode-handle-dragging .navigation-position-label,
+/*.timeline-component.marker-context-open .timecode-position-label,*/
+/*.timeline-component.marker-context-open .graph-cursor,
+.timeline-component.marker-context-open .marker-details,*/
+/*,
+.timeline-component.navigation-dragging .timecode-position-label*/{
+  display: none !important;
+}
+
+.timeline-component.marker-dragging .marker-details {
+  visibility: hidden !important;
+}
+
+
+/* * * * * * * * * * * * * * * * * * * * * 
+ CURSOR RELATED
+ * * * * * * * * * * * * * * * * * * * * */
+
+/*body.key-shift-down .timeline-component.marker-dragging .timeline-graph .graph-cursor {
+  display: none;
+}*/
+
+body.key-space-down .timeline-component .marker {
+  pointer-events: none !important;
+}
+
+body.key-space-down .timeline-component .timeline-graph {
+  cursor: move; 
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+html body .timeline-component.marker-background-dragging *, 
+.timeline-component.graph-dragging .timeline-graph .graph-background,
+.timeline-component.navigation-background-dragging *{
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
+html body .timeline-component.marker-handle-dragging *,
+html body .timeline-component.navigation-handle-dragging * {
+  cursor: ew-resize !important;
+}
+
+
+/* * * * * * * * * * * * * * * * * * * * * 
+ OTHER
+ * * * * * * * * * * * * * * * * * * * * */
+
+.timeline-component {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: absolute;
+  bottom: 0px;
+  left: 20px;
+  width: 100%;
+  height: 350px;
+  background: #404040;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.timeline-graph {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.timeline-graph.transition {
+  transition: margin-left 500ms;
+}
+
+.timeline-component.slider-dragging .timeline-graph,
+.timeline-component.graph-dragging .timeline-graph,
+.timeline-component.navigation-dragging .timeline-graph {
+  transition: none;
+}
+
+.timeline-graph .graph-background {
+  width: 100%;
+  height: 100%;
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.timeline-component .timeline-graph .graph-cursor {
+  position: absolute;
+  border-top: 18px solid black;
+  z-index: 5;
+  width: 1px;
+  height: 100%;
+  background: black;
+  top: 0;
+  pointer-events: none;
+  display: none;
+}
+
+.timeline-component .timeline-navigation .navigation-playhead {
+  position: absolute;
+  z-index: 5;
+  width: 1px;
+  height: 100%;
+  background: #00ffff;
+/*  background: #070;*/
+  top: 0;
+  pointer-events: none;
+}
+
+
+/* issue: 
+    playhead should be fixed, but also 
+    relative to .marker-container width. 
+    should not scroll vertically.
+*/
+.timeline-component .timeline-graph .graph-playhead {
+  position: absolute;
+  z-index: 15;
+  width: 1px;
+  height: 100%;
+  background: #00ffff;
+/*  background: #070;*/
+  border-top: 18px solid black;
+  top: 0;
+  pointer-events: none;
+}
+
+
+
+.timeline-navigation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 17px;
+  width: 100%;
+/*  border-top: 1px solid black;*/
+  background: #404040;
+  cursor: pointer;
+/*  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;*/
+  z-index: 20;
+}
+
+
+
+.timeline-navigation .navigation-bar .navigation-handle.is-dragged,
+.timeline-component.navigation-handle-dragging .timeline-navigation .navigation-bar .navigation-handle .handle-pointer,
+.timeline-navigation .navigation-bar .navigation-handle:hover .handle-pointer{
+  border-top-color: #0ff;
+}
+
+.navigation-bar .navigation-handle {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 10px;
+  cursor: ew-resize;
+}
+
+.timeline-navigation .navigation-bar .navigation-handle .handle-pointer {
+  width: 10px;
+  height: 10px;
+  border: 5px solid transparent;
+  border-top: 5px solid #ddd;
+  
+}
+
+.navigation-bar .handle-left {
+  left: -5px;
+}
+
+.navigation-bar .handle-right {
+  right: -5px;
+}
+
+
+.timeline-navigation .navigation-cursor {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: black;
+  z-index: 10;
+  display: none;
+  pointer-events: none;
+}
+
+.timeline-navigation .navigation-position-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+/*  background: black;
+  color: white;*/
+  display: none;
+  font-size: 13px;
+  color: #0ff;
+  line-height: 15px;
+  padding: 1px 8px 0;
+  pointer-events: none;
+/*  font-weight: bold;*/
+}
+
+.timeline-navigation .navigation-bar {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  width: 200px;
+  background: #2a2a2a;
+}
+
+.timeline-navigation .navigation-bar-background {
+  width: 100%;
+  height: 100%;
+}
+
+.timecode-controls .timecode-background,
+.timeline-navigation .navigation-background {
+  height: 100%;
+  background: transparent;
+}
+
+.timeline-component .timecode-position-label {
+  position: absolute;
+  top: 0px;
+  line-height: 16px;
+/*  width: 100px;*/
+  z-index: 2;
+  font-size: 13px;
+  padding: 0px 8px 0 8px;
+  pointer-events: none;
+  display: none;
+  background: #404040;
+  color: #0ff;
+  height: 15px;
+/*  font-weight: bold;*/
+/*  margin: 0 1px;*/
+}
+.timeline-cursor .pointer {
+  /*top: -8px;
+  left: -8px;*/
+/*  margin: -4px 0 0 -4px;
+  width: 10px;
+  height: 10px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid black;
+  z-index: 150;*/
+/*  background: black;*/
+}
+
+.timeline-component .timecode-controls {
+  width: 100%;
+  height: 22px;
+  position: absolute;
+  top: 17px;
+  left: 0;
+/*  border-top: 1px solid #a5a5a5;*/
+  border-top: 1px solid black;
+/*  border-bottom: 1px solid #aaa;*/
+/*  background: #ddd;*/
+  cursor: pointer;
+}
+
+/*.timeline-component.timecode-handle-dragging .timecode-controls,
+.timeline-component .timecode-controls:hover,
+.timeline-component.timecode-handle-dragging .timecode-controls .timecode-position-label,
+.timeline-component .timecode-controls:hover .timecode-position-label {
+  background: #404040;
+}*/
+
+
+.timeline-component .timecode-controls .timecode-playhead-handle {
+  position: absolute;
+  top: 0px;
+  margin: 0px 0 0 -8px;
+  width: 16px;
+  height: 16px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #00ffff;
+/*  border-top: 8px solid #070;*/
+  z-index: 19;
+  pointer-events: none;
+}
+
+.timeline-component .timecode-controls .timecode-playhead-shadow {
+  position: absolute;
+  top: 0px;
+  margin: 0px 0 0 -8px;
+  width: 16px;
+  height: 16px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #00ffff;
+  z-index: 18;
+  display: none;
+  pointer-events: none;
+}
+
+.timeline-component .timecode-controls:hover .timecode-playhead-shadow {
+  display: block;
+}
+
+.marker-context-button {
+  cursor: pointer;
+}
+
+.tc-grid-item {
+  height: 12px;
+  border-left: 1px solid black;
+  color: black;
+  padding-left: 4px;
+  padding-top: 1px;
+  font-size: 13px;
+/*  line-height: 16px;*/
+  float:left;
+  overflow:hidden;
+}
+
+.tc-grid-item.hour {
+  padding-left: 6px;
+  /*color: #0ff;
+  border-color: #0ff;*/
+  font-weight: bold;
+}
+
+.tc-grid-item:nth-child(even) {
+/*  background: #d0d0d0;*/
+/*  background: #404040;*/
+}
