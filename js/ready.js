@@ -60,21 +60,34 @@ jQuery( function ($) {
 
     if ( params.group && params.context ) {
         api.getEvent(params.group,params.context,function(video){
+
             var duration = video.duration * 1000;
             GLOBAL.duration = duration;
-            api.listEventsForTimespan( params.group,video.utc_timestamp, video.utc_timestamp.getTime()+duration,'intersect',function(events){
-                var videoTime = video.utc_timestamp.getTime();
-                $.map(events,function(e,i){
-                    var start = e.utc_timestamp.getTime()-videoTime;
-                    markerData.push({
-                        start: parseInt( start, 10 ),
-                        end: parseInt( e.duration > 0 ? (start + (e.duration*1000)) : start, 10 ),
-                        label: e.fields.title || 'Untitled',
-                        type: e.type
+
+            app.video = new VideoComponent(
+                appConfig.video_streamer.host +
+                appConfig.video_streamer.base_path + '/' +
+                video.fields.title + '.mp4' );
+
+            api.listEventsForTimespan(
+                params.group,
+                video.utc_timestamp,
+                video.utc_timestamp.getTime()+duration,
+                'intersect',
+                function(events){
+                    var videoTime = video.utc_timestamp.getTime();
+                    $.map(events,function(e){
+                        var start = e.utc_timestamp.getTime()-videoTime;
+                        markerData.push({
+                            start: parseInt( start, 10 ),
+                            end: parseInt( e.duration > 0 ? (start + (e.duration*1000)) : start, 10 ),
+                            label: e.fields.title || 'Untitled',
+                            type: e.type,
+                            data : e
+                        });
                     });
+                    finishInit();
                 });
-                finishInit();
-            });
         });
     }
 
@@ -85,7 +98,6 @@ jQuery( function ($) {
         // components
         app.timeline = new TimelineComponent(markerData);
         app.displayControls = new DisplayControls(app.timeline);
-        app.video            = new VideoComponent( "http://d35vpnmjdsiejq.cloudfront.net/dh/piecemaker/D01T02_Ros_sync_AJA_1.mp4" );
 
         // timecode listeners
         // all listeners have to implement setTimecode()
