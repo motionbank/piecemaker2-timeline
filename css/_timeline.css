@@ -80,6 +80,7 @@ html body .timeline-component.navigation-handle-dragging * {
   left: 20px;
   width: 100%;
   height: 350px;
+  height: 40vh;
   background: #404040;
   overflow-x: hidden;
   overflow-y: visible;
