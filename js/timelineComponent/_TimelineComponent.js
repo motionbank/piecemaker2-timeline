@@ -32,9 +32,9 @@ function TimelineComponent( _markerData ) {
     this.graph.addMarker( _data );
   }
   
-  this.setTimecode = function ( _tc, _sender ) {
+  this.setTimecode = function ( _tc ) {
     this.setPlayheadPosition( _tc / GLOBAL.duration );
-    this.graph.setTimecode( _tc, _sender );
+    this.graph.setTimecode( _tc );
   }
   
   this.cachePosition = function () {

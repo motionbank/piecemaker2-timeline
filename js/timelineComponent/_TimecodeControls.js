@@ -60,7 +60,7 @@ function TimecodeControls( _timelineComponent, _timelineGraph ) {
     });
   }
   
-  this.setTimecode = function ( _tc, _sender ) {
+  this.setTimecode = function ( _tc ) {
 
   }
   

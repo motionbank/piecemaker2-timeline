@@ -78,8 +78,8 @@ function TimelineGraph( _timelineComponent, _markerData ) {
       GET & SET
   */
   
-  this.setTimecode = function ( _tc, _sender ) {
-    this.timecodeControls.setTimecode( _tc, _sender );
+  this.setTimecode = function ( _tc ) {
+    this.timecodeControls.setTimecode( _tc );
   }
   
   this.focus = function () {
