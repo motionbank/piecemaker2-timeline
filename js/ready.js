@@ -71,13 +71,15 @@ jQuery( function ($) {
   // components  
   app.timeline         = new TimelineComponent( markerData );
   app.displayControls  = new DisplayControls( app.timeline );
+  app.video            = new VideoComponent( "http://d35vpnmjdsiejq.cloudfront.net/dh/piecemaker/D01T02_Ros_sync_AJA_1.mp4" );
   
   // timecode listeners
   // all listeners have to implement setTimecode()
   GLOBAL.observer.addListener( app.timeline );
   GLOBAL.observer.addListener( app.displayControls );
+  GLOBAL.observer.addListener( app.video );
   
-  $('body').append( app.timeline.el, app.displayControls.el );
+  $('body').append( app.timeline.el, app.displayControls.el, app.video.el );
   
   // required
   cacheDimensions();
