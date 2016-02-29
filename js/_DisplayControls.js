@@ -49,23 +49,16 @@ function DisplayControls( _timelineComponent ) {
     
     this.btnContainer.append(this.label.clone().text("Marker types"));
     
-    
     // buttons
-    for (var i = 0; i < markerTypes.length; i++) {
-      var mt = markerTypes[i];
-      var el = $('<div class="button button-marker-visibility active ' + mt + '" data-target=' + mt + '>' + mt.toProperCase() + '<span class="counter"></span></div>');
+    $.map(GLOBAL.markerTypes, function (v,k) {
+      var mt = k.toString();
+      var el = $('<div class="button button-marker-visibility active type-' + mt + '" data-target=' + mt + '>' + mt.toProperCase() + '<span class="counter">' + v + '</span></div>');
       el.click(function (event) {
         GLOBAL.observer.toggleMarkerVisibility( $(this).data("target") );
       });
-      this.btnContainer.append(el);
-    }
+      that.btnContainer.append(el);
+    });
     
-    
-    for (var i = 0; i < markerTypes.length; i++) {
-      var mt = markerTypes[i];
-      var m = $('.marker.' + mt);
-      $('.button.' + mt).find('.counter').text(m.length);
-    }
     
     this.btnContainer.append(this.spacer.clone());
     this.btnContainer.append(this.label.clone().text("Timeline"));

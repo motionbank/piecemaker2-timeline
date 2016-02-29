@@ -23,7 +23,7 @@ function Observer( _app ) {
   }
   
   this.toggleMarkerVisibility = function ( _markerClass ) {
-    $('.marker.' + _markerClass ).toggleClass("is-visible");
+    $('.marker.type-' + _markerClass ).toggleClass("is-visible");
     this.app.timeline.graph.alignMarkers();
   }
   

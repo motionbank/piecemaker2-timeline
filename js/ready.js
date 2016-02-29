@@ -103,6 +103,8 @@ jQuery( function ($) {
                     });
 
                     GLOBAL.markerTypes = types;
+                    
+                    console.log(GLOBAL.markerTypes);
 
                     finishInit();
                 });
@@ -124,8 +126,6 @@ jQuery( function ($) {
           GLOBAL.observer.addListener( app.video );
 
           $('body').append( app.timeline.el, app.displayControls.el, app.video.el );
-
-        $('body').append(app.timeline.el, app.displayControls.el);
 
         // required
         cacheDimensions();
