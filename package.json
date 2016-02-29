@@ -1,0 +1,25 @@
+{
+  "name": "piecemaker2-timeline",
+  "version": "0.0.0",
+  "description": "A timeline for Piecemaker2",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/motionbank/piecemaker2-timeline.git"
+  },
+  "author": "Mathias Baer, Florian Jenett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/motionbank/piecemaker2-timeline/issues"
+  },
+  "homepage": "https://github.com/motionbank/piecemaker2-timeline#readme",
+  "dependencies": {
+    "piecemaker-api-client": "0.0.21"
+  }
+}
