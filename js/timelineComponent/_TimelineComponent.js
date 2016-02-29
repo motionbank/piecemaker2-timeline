@@ -34,6 +34,7 @@ function TimelineComponent( _markerData ) {
   
   this.setTimecode = function ( _tc ) {
     this.setPlayheadPosition( _tc / GLOBAL.duration );
+    this.graph.setTimecode( _tc );
   }
   
   this.cachePosition = function () {
@@ -240,12 +241,12 @@ function TimelineComponent( _markerData ) {
     // if (_align==="center") off = this.graph.absToRel( this.width/2 );
     // if (_align==="right") off = this.graph.absToRel( this.width );
     
-    var p = UTILS_restrict( _p - off, 0, this.graph.absToRel( this.graph.width - this.width ) );
+    // var p = UTILS_restrict( _p - off, 0, this.graph.absToRel( this.graph.width - this.width/2 ) );
             
     if ( !this.checkIfPointOnScreen( _p ) ) {
       // if (_doTransition) this.graph.setTransition(true);
       // else this.graph.setTransition(false);
-      this.setScrollPosition( p, _doTransition, _align );
+      this.setScrollPosition( _p, _doTransition, _align );
     }
   }
   

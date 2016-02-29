@@ -155,14 +155,14 @@ function MarkerContextMenu( _timelineComponent ) {
     
     //move tc to start
     this.btn_goToStart.click(function(event){
-      GLOBAL.observer.setTimecode(that.marker.start);
+      GLOBAL.observer.setTimecode(that.marker.start, that);
       that.component.ifNotOnScreenThenScrollTo( that.marker.x, true, "center" );
       that.afterChange();
     });
     
     // move tc to end
     this.btn_goToEnd.click(function(event){
-      GLOBAL.observer.setTimecode(that.marker.end);
+      GLOBAL.observer.setTimecode(that.marker.end, that);
       that.component.ifNotOnScreenThenScrollTo( that.marker.getEndRel(), true, "center" );
       that.afterChange();
     });

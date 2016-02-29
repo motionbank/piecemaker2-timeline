@@ -2,7 +2,11 @@ function VideoComponent( _url ) {
 
     var self = this;
   
-  this.el = $('<video src="' + _url + '" controls="controls" ></video>');
+  // .currentTime does not work with jquery element?
+  this.el = $('<video id="annotator-video" src="' + _url + '" controls="controls" ></video>');
+  this.player = null;
+  
+  this.updateInterval = null;
   
   this.url = _url;
   
