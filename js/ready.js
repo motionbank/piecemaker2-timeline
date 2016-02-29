@@ -82,11 +82,6 @@ jQuery( function ($) {
 
         GLOBAL.observer = new Observer(app);
 
-        $(window).load(function () {
-            app.displayControls.init();
-            app.timeline.init();
-        });
-
         // components
         app.timeline = new TimelineComponent(markerData);
         app.displayControls = new DisplayControls(app.timeline);
@@ -172,6 +167,9 @@ jQuery( function ($) {
             GLOBAL.height = $(window).height();
             app.timeline.cachePosition();
         };
+        
+        app.displayControls.init();
+        app.timeline.init();
     }
 });
 
