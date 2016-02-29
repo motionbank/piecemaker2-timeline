@@ -90,7 +90,7 @@ html body .timeline-component.navigation-handle-dragging * {
   position: relative;
   height: 100%;
   overflow: hidden;
-  overflow-y: scroll;
+/*  overflow-y: scroll;*/
 }
 
 .timeline-graph.transition {

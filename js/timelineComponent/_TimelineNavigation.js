@@ -150,10 +150,10 @@ function TimelineNavigation( _timelineComponent ) {
   
   this.mousemoveHandler = function (event) {
     var x = this.component.locX( event.pageX );
-    this.updateLabel( x );
     if (this.isDragged && this.draggingFunction) {
       this.draggingFunction(event);
     }
+    this.updateLabel( x );
   }
   
   this.mouseupHandler = function (event) {

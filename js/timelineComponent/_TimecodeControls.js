@@ -12,21 +12,26 @@ function TimecodeControls( _timelineComponent, _timelineGraph ) {
   this.labelWidth       = 0;
   this.cursorTimecode   = 0;
   
+  
+  // time scala
   var r = 60000; // 1 min
   var w = r/GLOBAL.duration * 100;
-  for (var i = 0; i < GLOBAL.duration/r; i++) {
+  var n = GLOBAL.duration/r;
+  for (var i = 0; i < n; i++) {
     // var min = doubleDigit(i % 60);
     var t = UTILS_getTimeFormatted( i * r );
-    var g = $('<div class="tc-grid-item"></div>').css("width",w+"%");
+    var _w = ( i > n -1 ) ? 100 - i*r / GLOBAL.duration * 100 : w;
+    var g = $('<div class="tc-grid-item"></div>').css("width",_w+"%");
     if (t.m==="00") {
       g.html(t.h + ":00").addClass("hour");
     }
     else {
       g.html(":"+t.m);
     }
-    
     this.background.append(g);
   }
+  
+  
   
   this.isDragged = false;
   
@@ -55,8 +60,12 @@ function TimecodeControls( _timelineComponent, _timelineGraph ) {
     });
   }
   
+  this.setTimecode = function ( _tc, _sender ) {
+
+  }
+  
   this.updateTimecode = function ( _relPos ) {
-    GLOBAL.observer.setTimecode( Math.round(_relPos * GLOBAL.duration) );
+    GLOBAL.observer.setTimecode( Math.round(_relPos * GLOBAL.duration), this );
   }
   
   this.mouseupHandler = function (event) {
@@ -71,12 +80,7 @@ function TimecodeControls( _timelineComponent, _timelineGraph ) {
     var x = UTILS_restrict( this.component.locX(event.pageX), 0, this.component.width );
     var relPos = pg.mapScreenPosition( x );
     var p = relPos;
-    if (pg.selectedMarker) {
-      var s = pg.selectedMarker;
-      // if (GLOBAL.observer.shiftDown && s.draggingState === "background") {
-      //   p = s.x
-      // }
-    }
+    
     var absPos = p * this.parentGraph.width;
     var time = "";
     
@@ -84,16 +88,23 @@ function TimecodeControls( _timelineComponent, _timelineGraph ) {
     var cP = absPos + 1;
     var nav = this.component.navigation;
     // slightly ugly
-    if (nav.isDragged && nav.draggingState === "background") {
+    if ( nav.isDragged && nav.draggingState === "background" ) {
       cP = this.parentGraph.mapScreenPosition( this.component.width/2 );
       cP *= this.parentGraph.width;
       this.cursorTimecode = nav.cursorTimecode;
-      time = UTILS_getTimeFormatted( this.cursorTimecode ).total;
     }
     else {
       this.cursorTimecode = Math.round( relPos * GLOBAL.duration );
-      time = UTILS_getTimeFormatted( this.cursorTimecode ).total;
     }
+    
+    if (pg.selectedMarker) {
+      if ( pg.selectedMarker.draggingState === "background" && pg.selectedMarker.isPoint ) {
+        cP = pg.selectedMarker.x * this.parentGraph.width;
+        this.cursorTimecode = pg.selectedMarker.start;
+      }
+    }
+    
+    time = UTILS_getTimeFormatted( this.cursorTimecode ).total;
     
     if (cP + this.labelWidth - this.parentGraph.position > this.component.width) cP -= this.labelWidth +1;
     

@@ -70,13 +70,17 @@ function TimelineGraph( _timelineComponent, _markerData ) {
     var m = new Marker(this.component, this, this.markers.length, _data );
     this.markers.push( m );
     this.markerContainer.append( m.el );
-    this.alignMarkers();
     m.init();
+    this.alignMarkers();
   }
   
   /*
       GET & SET
   */
+  
+  this.setTimecode = function ( _tc, _sender ) {
+    this.timecodeControls.setTimecode( _tc, _sender );
+  }
   
   this.focus = function () {
     this.isFocused = true;
@@ -385,11 +389,17 @@ function TimelineGraph( _timelineComponent, _markerData ) {
     if (nav.isDragged && nav.draggingState === "background") {
       cP = this.mapScreenPosition( this.component.width/2 );
     }
-    this.setCursorPosition( cP );
 
     if (this.selectedMarker) {
       this.selectedMarker.mousemoveHandler(event);
+      
+      if ( this.selectedMarker.draggingState === "background" && this.selectedMarker.isPoint ) {
+        cP = this.selectedMarker.x;
+        this.cursorTimecode = this.selectedMarker.start;
+      }
     }
+    
+    this.setCursorPosition( cP );
     
     if (this.isDragged) {
       var p = UTILS_restrict(this.impactPosition - x, 0, this.width - this.component.width);
