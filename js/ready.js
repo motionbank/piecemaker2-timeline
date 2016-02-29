@@ -24,6 +24,8 @@ jQuery( function ($) {
     //read parameters from URL
     var url = parseURL(window.location.href);
     var params = url.searchObject;
+
+    appConfig.piecemaker.api_key = params.key;
   
   /* = = = = = = = = = = = = = = = = = *
    * DATA SETUP                        *
@@ -72,7 +74,7 @@ jQuery( function ($) {
                         markerData.push({
                             start: parseInt( start, 10 ),
                             end: parseInt( e.duration > 0 ? (start + (e.duration*1000)) : start, 10 ),
-                            label: e.fields.title || 'Untitled',
+                            label: e.fields.title || e.fields.description || 'Untitled',
                             type: e.type,
                             data : e
                         });
