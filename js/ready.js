@@ -67,6 +67,7 @@ jQuery( function ($) {
                         }
 
                         var start = e.utc_timestamp.getTime()-videoTime;
+                        e.context_time = videoTime;
 
                         markerData.push({
                             start: parseInt( start, 10 ),

@@ -32,6 +32,8 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   
   this.title              = data.label;
   this.type               = data.type;
+
+  this.original_data      = data.data || {}; // the Picemaker2 event data
   
   this.labelWidth         = 0;
   this.labelPosition      = 0;
@@ -158,7 +160,26 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   
   this.afterChangeHandler = function () {
     console.log("MARKER: after change", this.id);
+    this.updateOriginalData();
     this.calcLabelWidthMax();
+  }
+
+  this.updateOriginalData = function () {
+    var api = GLOBAL.apiClient;
+    var self = this;
+    if ( this.original_data ) {
+      var data = this.original_data;
+      api.getEvent(data.event_group,data.id,function(evt){
+        api.updateEvent(evt.event_group,evt.id,{
+          utc_timestamp : data.context_time + self.start,
+          duration : self.duration / 1000.0,
+          token : evt.token
+        },function(evt2){
+          evt2.context_time = data.context_time;
+          self.original_data = evt2;
+        });
+      });
+    }
   }
   
   this.graphResizeEndHandler = function () {
