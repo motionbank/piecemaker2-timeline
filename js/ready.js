@@ -172,8 +172,6 @@ jQuery( function ($) {
             GLOBAL.height = $(window).height();
             app.timeline.cachePosition();
         };
-
-=======
   
   // complete duration in milliseconds, int
   GLOBAL.duration = 10800000; // => 3 hours
