@@ -6,10 +6,11 @@ function Observer( _app ) {
   this.spaceDown = false;
   
   // in milliseconds
-  this.setTimecode = function ( _tc ) {
+  this.setTimecode = function ( _tc, _callee ) {
     // console.log( "TC:", _tc );
     this.timecode = _tc;
     for (var i = 0; i < this.listeners.length; i++) {
+      if ( _callee && _callee === this.listeners[i] ) continue;
       this.listeners[i].setTimecode( this.timecode );
     }
   }

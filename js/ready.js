@@ -21,7 +21,7 @@ var app = {
 
 jQuery( function ($) {
 
-    //parse data from URL
+    //read parameters from URL
     var url = parseURL(window.location.href);
     var params = url.searchObject;
   
@@ -31,33 +31,8 @@ jQuery( function ($) {
 
   var api = GLOBAL.apiClient = new PieceMakerApi(appConfig.piecemaker);
 
-    // marker data
+    // see comment at foot of document for structure
     var markerData = [];
-    /*
-     *    DATA STRUCTURE:
-     *    [
-     *      {
-     *        start: 123000,        // milliseconds, int
-     *        end: 130000,          // milliseconds, int
-     *        label: "some text",   // string
-     *        type: "titel"         // string
-     *
-     *      },
-     *      ...
-     *    ]
-     *
-     *    allowed marker types for now because colors are hard coded atm:
-     *      "titel"
-     *      "technik"
-     *      "kommentar"
-     *      "asset"
-     *      "person"
-     *      "ort"
-     *      "referenz"
-     *
-     *    for random type use:
-     *      markerTypePossibility.getRandom()
-     */
 
     if ( params.group && params.context ) {
         api.getEvent(params.group,params.context,function(video){
@@ -103,8 +78,6 @@ jQuery( function ($) {
                     });
 
                     GLOBAL.markerTypes = types;
-                    
-                    console.log(GLOBAL.markerTypes);
 
                     finishInit();
                 });
@@ -203,7 +176,28 @@ jQuery( function ($) {
     }
 });
 
-
-
-
-
+/*
+ *    MARKER DATA STRUCTURE:
+ *    [
+ *      {
+ *        start: 123000,        // milliseconds, int
+ *        end: 130000,          // milliseconds, int
+ *        label: "some text",   // string
+ *        type: "titel"         // string
+ *
+ *      },
+ *      ...
+ *    ]
+ *
+ *    allowed marker types for now because colors are hard coded atm:
+ *      "titel"
+ *      "technik"
+ *      "kommentar"
+ *      "asset"
+ *      "person"
+ *      "ort"
+ *      "referenz"
+ *
+ *    for random type use:
+ *      markerTypePossibility.getRandom()
+ */
