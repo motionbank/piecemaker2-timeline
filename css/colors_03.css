@@ -1,0 +1,92 @@
+.marker.type-marker.is-focused .label,
+.marker.type-marker.is-selected .handle,
+#controls .button.type-marker,
+.marker.type-marker .background {
+  background-color: #ff4c3b;
+}
+
+.marker.type-scene.is-focused .label,
+.marker.type-scene.is-selected .handle,
+#controls .button.type-scene,
+.marker.type-scene .background {
+  background-color: #ffa700;
+}
+
+.marker.type-comment.is-focused .label,
+.marker.type-comment.is-selected .handle,
+#controls .button.type-comment,
+.marker.type-comment .background {
+  background-color: #5b95fc;
+}
+
+.marker.type-title.is-focused .label,
+.marker.type-title.is-selected .handle,
+#controls .button.type-title,
+.marker.type-title .background {
+  background-color: #60c458;
+}
+
+.marker.type-note.is-focused .label,
+.marker.type-note.is-selected .handle,
+#controls .button.type-note,
+.marker.type-note .background {
+  background-color: #d175c2;
+}
+
+.marker.type-video.is-focused .label,
+.marker.type-video.is-selected .handle,
+#controls .button.type-video,
+.marker.type-video .background {
+  background-color: #9e7a60;
+}
+
+.marker.type-data.is-focused .label,
+.marker.type-data.is-selected .handle,
+#controls .button.type-data,
+.marker.type-data .background {
+  background-color: #989898;
+}
+
+
+
+.marker.type-marker:not(.is-focused) .label,
+.marker.type-marker .background {
+  color: #ff4c3b;
+}
+
+.marker.type-scene:not(.is-focused) .label,
+.marker.type-scene .background {
+  color: #ffa700;
+}
+
+.marker.type-comment:not(.is-focused) .label,
+.marker.type-comment .background {
+  color: #5b95fc;
+}
+
+.marker.type-title:not(.is-focused) .label,
+.marker.type-title .background {
+  color: #60c458;
+}
+
+.marker.type-note:not(.is-focused) .label,
+.marker.type-note .background {
+  color: #d175c2;
+}
+
+.marker.type-video:not(.is-focused) .label,
+.marker.type-video .background {
+  color: #9e7a60;
+}
+
+.marker.type-data:not(.is-focused) .label,
+.marker.type-data .background {
+  color: #989898;
+}
+
+
+/*.marker.type-scene:not(.is-selected):hover .background {
+  background-color: #402900;
+  border-right-color: #402900;
+  border-left-color: #402900;
+}*/

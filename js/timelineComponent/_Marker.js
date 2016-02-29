@@ -54,8 +54,8 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   this.markerDetail       = null;
   
   // fake
-  this.type = markerTypePossibility.getRandom();
-  this.el.addClass( this.type );
+  // this.type = markerTypePossibility.getRandom();
+  this.el.addClass( "type-" + this.type );
   this.el.attr("data-id",this.id);
   this.label.text( this.title );
   
