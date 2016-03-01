@@ -58,11 +58,19 @@ function AddMarkerControls() {
       type: this.typeContainer.find(".button.active").first().data("type") || "No_type"
     };
     
+    this.deleteInputs();
+    
     console.log(data,"is point:",this.inputIsPoint.is(":checked"));
     
     for (var i = 0; i < this.targets.length; i++) {
       this.targets[i].addMarker( data );
     }
+  }
+  
+  this.deleteInputs = function () {
+    this.inputLabel.val("");
+    this.inputDescription.val("");
+    this.inputIsPoint.prop( "checked", false );
   }
   
   this.addTarget = function ( _target ) {
