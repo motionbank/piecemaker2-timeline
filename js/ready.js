@@ -57,7 +57,7 @@ jQuery( function ($) {
                 GLOBAL.duration = duration;
 
                 app.video = new VideoComponent(
-                    'http://'+
+                    // 'http://'+       /* einmal http zu viel */
                     appConfig.media.host +
                     appConfig.media.base_url + '/' +
                     (video.fields['local-file'] || (video.fields.title +'.mp4')) );
@@ -130,10 +130,6 @@ jQuery( function ($) {
 
         // GLOBAL.observer.setTimecode() synchronizes the timecode of all objects
         // that were added as listeners to GLOBAL.observer via GLOBAL.observer.addListener()
-        // => random timecode for demonstration
-        // milliseconds
-        GLOBAL.observer.setTimecode(Math.floor(GLOBAL.duration * (Math.random() * 0.6 + 0.2)));
-
 
         $(document).on({
             'click': function (event) {
