@@ -130,6 +130,7 @@ jQuery( function ($) {
 
         // GLOBAL.observer.setTimecode() synchronizes the timecode of all objects
         // that were added as listeners to GLOBAL.observer via GLOBAL.observer.addListener()
+        GLOBAL.observer.setTimecode(0);
 
         $(document).on({
             'click': function (event) {
@@ -188,6 +189,16 @@ jQuery( function ($) {
         
         app.displayControls.init();
         app.timeline.init();
+        
+        // marker settings setup
+        // $.map(markerSettings,function (v,k) {
+        //   $(".marker.type-" + k + ".is-focused .label, .marker.type-" + k + ".is-selected .handle, #controls .button.type-" + k + ", .marker.type-" + k + " .background").css({
+        //     "background-color": v.color
+        //   });
+        //   $(".marker.type-video:not(.is-focused) .label, .marker.type-video .background").css({
+        //     "color": v.color
+        //   });
+        // });
     }
 });
 

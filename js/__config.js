@@ -4,6 +4,11 @@ Array.prototype.pushMany = function ( _v, _n ) {
   }
 }
 
+// ["video", "data", "scene", "marker","title","comment","note"]
+// var markerSettings = {
+//   "video": {"color":"#5b95fc"}
+// };
+
 var TITEL = "titel";
 var TECHNIK = "technik";
 var KOMMENTAR = "kommentar";
