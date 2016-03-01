@@ -1,0 +1,17 @@
+.add-marker-controls {
+  position: fixed;
+  top: 20vh;
+  left: 20px;
+  background: black;
+  padding: 10px 0;
+}
+
+.add-marker-controls > * {
+  width: 280px;
+}
+
+.add-marker-controls .button.submit,
+.add-marker-controls input[type="text"],
+.add-marker-controls textarea {
+  margin: 0 10px;
+}

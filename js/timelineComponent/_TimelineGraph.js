@@ -70,8 +70,12 @@ function TimelineGraph( _timelineComponent, _markerData ) {
     var m = new Marker(this.component, this, this.markers.length, _data );
     this.markers.push( m );
     this.markerContainer.append( m.el );
+    this.selectMarker(m);
     m.init();
+    // m.updateOriginalData();
     this.alignMarkers();
+    
+    console.log("GRAPH: new marker added", m);
   }
   
   /*

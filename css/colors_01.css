@@ -1,23 +1,23 @@
 .marker.titel.is-focused .label,
-#controls .button.titel,
+.control-component .button.titel,
 .marker.titel .background {
   background: #ff9494;
 }
 
 .marker.technik.is-focused .label,
-#controls .button.technik,
+.control-component .button.technik,
 .marker.technik .background {
   background: #ffbb67;
 }
 
 .marker.kommentar.is-focused .label,
-#controls .button.kommentar,
+.control-component .button.kommentar,
 .marker.kommentar .background {
   background: #a1a1ff;
 }
 
 .marker.asset.is-focused .label,
-#controls .button.asset,
+.control-component .button.asset,
 .marker.asset .background {
   background: #63d691;
 }

@@ -1,7 +1,7 @@
 function DisplayControls( _timelineComponent ) {
   
   this.component        = _timelineComponent;  
-  this.el               = $('<div id="controls"></div>');
+  this.el               = $('<div id="controls" class="control-component"></div>');
   this.btn_open         = $('<div class="controls-opener"><img src="img/icons/display_40_40_ddd.png" alt="" /></div>');
   this.btnContainer     = $('<div class="button-container"></div>');
   

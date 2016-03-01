@@ -110,14 +110,23 @@ jQuery( function ($) {
         // components
         app.timeline = new TimelineComponent(markerData);
         app.displayControls = new DisplayControls(app.timeline);
-
+        app.addMarkerControls = new AddMarkerControls();
+        
+        // targets have to implement addMarker( _data )
+        app.addMarkerControls.addTarget(app.timeline);
+        
         // timecode listeners
-        // all listeners have to implement setTimecode()
+        // all listeners have to implement setTimecode( _tc )
         GLOBAL.observer.addListener(app.timeline);
         GLOBAL.observer.addListener(app.displayControls);
           GLOBAL.observer.addListener( app.video );
 
-          $('body').append( app.timeline.el, app.displayControls.el, app.video.el );
+          $('body').append( 
+            app.timeline.el, 
+            app.displayControls.el, 
+            app.video.el, 
+            app.addMarkerControls.el 
+          );
 
         // required
         cacheDimensions();
@@ -192,7 +201,7 @@ jQuery( function ($) {
         
         // marker settings setup
         // $.map(markerSettings,function (v,k) {
-        //   $(".marker.type-" + k + ".is-focused .label, .marker.type-" + k + ".is-selected .handle, #controls .button.type-" + k + ", .marker.type-" + k + " .background").css({
+        //   $(".marker.type-" + k + ".is-focused .label, .marker.type-" + k + ".is-selected .handle, .control-component .button.type-" + k + ", .marker.type-" + k + " .background").css({
         //     "background-color": v.color
         //   });
         //   $(".marker.type-video:not(.is-focused) .label, .marker.type-video .background").css({

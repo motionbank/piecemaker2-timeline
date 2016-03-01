@@ -1,48 +1,48 @@
 .marker.titel.is-focused .label,
 .marker.titel.is-selected .handle,
-#controls .button.titel,
+.control-component .button.titel,
 .marker.titel .background {
   background-color: #ff4c3b;
 }
 
 .marker.technik.is-focused .label,
 .marker.technik.is-selected .handle,
-#controls .button.technik,
+.control-component .button.technik,
 .marker.technik .background {
   background-color: #ffa700;
 }
 
 .marker.kommentar.is-focused .label,
 .marker.kommentar.is-selected .handle,
-#controls .button.kommentar,
+.control-component .button.kommentar,
 .marker.kommentar .background {
   background-color: #5b95fc;
 }
 
 .marker.asset.is-focused .label,
 .marker.asset.is-selected .handle,
-#controls .button.asset,
+.control-component .button.asset,
 .marker.asset .background {
   background-color: #60c458;
 }
 
 .marker.person.is-focused .label,
 .marker.person.is-selected .handle,
-#controls .button.person,
+.control-component .button.person,
 .marker.person .background {
   background-color: #d175c2;
 }
 
 .marker.ort.is-focused .label,
 .marker.ort.is-selected .handle,
-#controls .button.ort,
+.control-component .button.ort,
 .marker.ort .background {
   background-color: #9e7a60;
 }
 
 .marker.referenz.is-focused .label,
 .marker.referenz.is-selected .handle,
-#controls .button.referenz,
+.control-component .button.referenz,
 .marker.referenz .background {
   background-color: #989898;
 }

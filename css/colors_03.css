@@ -1,48 +1,48 @@
 .marker.type-marker.is-focused .label,
 .marker.type-marker.is-selected .handle,
-#controls .button.type-marker,
+.control-component .button.type-marker,
 .marker.type-marker .background {
   background-color: #ff4c3b;
 }
 
 .marker.type-scene.is-focused .label,
 .marker.type-scene.is-selected .handle,
-#controls .button.type-scene,
+.control-component .button.type-scene,
 .marker.type-scene .background {
   background-color: #ffa700;
 }
 
 .marker.type-video.is-focused .label,
 .marker.type-video.is-selected .handle,
-#controls .button.type-video,
+.control-component .button.type-video,
 .marker.type-video .background {
   background-color: #5b95fc;
 }
 
 .marker.type-title.is-focused .label,
 .marker.type-title.is-selected .handle,
-#controls .button.type-title,
+.control-component .button.type-title,
 .marker.type-title .background {
   background-color: #60c458;
 }
 
 .marker.type-comment.is-focused .label,
 .marker.type-comment.is-selected .handle,
-#controls .button.type-comment,
+.control-component .button.type-comment,
 .marker.type-comment .background {
   background-color: #d175c2;
 }
 
 .marker.type-note.is-focused .label,
 .marker.type-note.is-selected .handle,
-#controls .button.type-note,
+.control-component .button.type-note,
 .marker.type-note .background {
   background-color: #9e7a60;
 }
 
 .marker.type-data.is-focused .label,
 .marker.type-data.is-selected .handle,
-#controls .button.type-data,
+.control-component .button.type-data,
 .marker.type-data .background {
   background-color: #989898;
 }
