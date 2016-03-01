@@ -3,6 +3,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   /*  TODO
    *  - FIX: label padding is different for default and .marker.is-focused => different labelWidth values 
    *  - do i need calcLabelWidthMax() and cacheLabelWidth() ?
+   *  - markerChangeHandler() use?
    */
   
   this.component          = _timelineComponent;
@@ -165,6 +166,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   }
 
   this.updateOriginalData = function () {
+    console.log("MARKER: updateOriginalData");
     var api = GLOBAL.apiClient;
     var self = this;
     if ( this.original_data ) {
@@ -204,6 +206,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   
   // global. graph calls only an selected marker
   this.mouseupHandler = function (event) {
+    console.log("MARKER: mouseupHandler");
     this.unsetDraggingState();
     // this.checkPointState();
     this.afterChangeHandler();
@@ -278,6 +281,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   
   this.convertToPoint = function () {
     this.setEnd(this.start);
+    // this.afterChangeHandler();
   }
   
   this.expandFromPoint = function () {
@@ -286,6 +290,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
       var s = this.parentGraph.absToRel(100);
       var e = Math.floor(this.start + s * GLOBAL.duration)
       this.setEnd(e);
+      // this.afterChangeHandler();
     }
   }
   

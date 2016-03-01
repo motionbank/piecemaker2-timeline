@@ -19,7 +19,7 @@
 .timeline-component.timecode-handle-dragging .timecode-playhead-shadow,
 .timeline-component.timecode-handle-dragging .timeline-graph .graph-cursor,
 .timeline-component.timecode-handle-dragging .navigation-cursor,
-.timeline-component.timecode-handle-dragging .navigation-position-label,
+.timeline-component.timecode-handle-dragging .navigation-position-label
 /*.timeline-component.marker-context-open .timecode-position-label,*/
 /*.timeline-component.marker-context-open .graph-cursor,
 .timeline-component.marker-context-open .marker-details,*/

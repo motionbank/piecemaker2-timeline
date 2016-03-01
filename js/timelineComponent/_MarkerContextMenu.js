@@ -119,14 +119,14 @@ function MarkerContextMenu( _timelineComponent ) {
     this.btn_startAtTc.click(function(event){
       that.marker.setStart(that.currentTimecode);
       that.component.ifNotOnScreenThenScrollTo( that.marker.x, true, "center" );
-      that.afterChange();
+      that.afterChange(true);
     });
   
     // end to tc
     this.btn_endAtTc.click(function(event){
       that.marker.setEnd(that.currentTimecode);
       that.component.ifNotOnScreenThenScrollTo( that.marker.getEndRel(), true, "center" );      
-      that.afterChange();
+      that.afterChange(true);
     });
     
     
@@ -174,7 +174,7 @@ function MarkerContextMenu( _timelineComponent ) {
       p = UTILS_restrict( p, 0, 1);
       g.component.ifNotOnScreenThenScrollTo( that.marker.x, true, "center" );
       that.marker.convertToPoint();
-      that.afterChange();
+      that.afterChange(true);
     });
     
     // expand
@@ -182,7 +182,7 @@ function MarkerContextMenu( _timelineComponent ) {
       var g = that.component.graph;
       that.marker.expandFromPoint();
       that.component.ifNotOnScreenThenScrollTo( that.marker.x, true, "center" );
-      that.afterChange();
+      that.afterChange(true);
     });
     
     // edit
@@ -191,9 +191,9 @@ function MarkerContextMenu( _timelineComponent ) {
     // });
   }
   
-  this.afterChange = function () {
+  this.afterChange = function ( _saveMarkerData ) {
     // this.component.graph.markerChangeHandler(this.marker);
-    // this.marker.afterChangeHandler();
+    if (_saveMarkerData) this.marker.afterChangeHandler();
     this.component.graph.afterContextActionHandler();
     this.marker = null;
   }
