@@ -19,7 +19,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   this.el.find(".marker-inner").append( this.background, this.label );
   this.el.append( this.handleRight, this.handleLeft );
   
-  var data = _data || {start:0,end:10000,end:15000,label:"label",type:"titel"};
+  var data = _data || {start:0,end:10000,end:15000,label:"label",type:"titel",description:""};
   
   this.x                  = data.start/GLOBAL.duration;     // 0 - 1
   this.y                  = 0;                              // 0 - 1
@@ -30,6 +30,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   this.start              = data.start;                     // mill
   this.end                = data.end                        // mill
   this.duration           = (data.end-data.start);          // mill
+  this.description        = data.description || "";
   
   this.title              = data.label;
   this.type               = data.type;
