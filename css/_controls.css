@@ -1,0 +1,130 @@
+#controls {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 20;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#controls > * {
+  float:left;
+} 
+
+#controls .button-container {
+/*  padding: 16px 10px 10px 10px;*/
+  padding: 0px 0 10px;
+  background: black;
+  display: none;
+/*  visibility: hidden;*/
+/*  opacity: 0;*/
+/*  transition: opacity 150ms;*/
+}
+
+#controls.is-selected .button-container {
+/*  opacity: 1;*/
+  display: block;
+/*  visibility: visible;*/
+}
+
+#controls.is-selected .controls-opener {
+  background: black;
+  border-right: 1px solid #333;
+}
+
+.control-component .header {
+  color: #ddd;
+  padding: 9px 0 0 10px;
+  line-height: 21px;
+  font-weight: bold;
+}
+
+.control-component {
+  pointer-events: none;
+}
+
+.control-component > *{
+  pointer-events: auto;
+}
+
+.control-component label,
+#controls .button-container .label {
+  color: #ddd;
+  margin-bottom: 1px;
+/*  border-left: 1px solid #ddd;*/
+  padding: 7px 10px;
+/*  font-size: 13px;*/
+  display: block;
+}
+
+#controls .controls-opener {
+  height: 40px;
+  width: 40px;
+}
+
+#controls .button {
+  margin: 0 10px 1px;
+  width: 280px;
+  position: relative;
+  background-repeat: no-repeat;
+/*  background-image: url(../img/icons/display_uncheck_30_30_02.png);*/
+}
+
+.control-component .button {
+  line-height: 30px;
+/*  opacity: 0.5;*/
+/*  color: rgba(0,0,0,0.4);*/
+  padding: 0 10px 0 10px;
+  cursor: pointer;
+  background: #ddd;
+  position: relative;
+/*  background-image: url(../img/icons/display_uncheck_30_30_02.png);*/
+}
+
+.control-component .button.button-icon {
+  padding: 0 10px 0 30px;
+}
+
+#controls .button.active {
+  background-image: url(../img/icons/display_check_30_30_02.png);
+/*  opacity: 1;
+  color: #111;*/
+}
+
+.control-component .spacer {
+  height: 1px;
+  margin-top: 10px;
+  border-top: 1px solid #333;
+  width: 100%;
+}
+
+.control-component .button:hover:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  content: " ";
+  width: 100%;
+  height: 100%;
+  border-left: 5px solid rgba(0,0,0,0.5);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  opacity: 1;
+}
+.control-component .button-toggle.active:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  content: " ";
+  width: 100%;
+  height: 100%;
+  border: 5px solid rgba(0,0,0,0.5);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  opacity: 1;
+}

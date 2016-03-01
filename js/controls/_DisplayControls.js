@@ -5,10 +5,10 @@ function DisplayControls( _timelineComponent ) {
   this.btn_open         = $('<div class="controls-opener"><img src="img/icons/display_40_40_ddd.png" alt="" /></div>');
   this.btnContainer     = $('<div class="button-container"></div>');
   
-  this.btn_labels       = $('<div class="button active marker-label-toggle">Show marker labels</div>');
-  this.btn_overlapping  = $('<div class="button overlapping-toggle">Highlight overlapping markers</div>');
+  this.btn_labels       = $('<div class="button button-icon active marker-label-toggle">Show marker labels</div>');
+  this.btn_overlapping  = $('<div class="button button-icon overlapping-toggle">Highlight overlapping markers</div>');
   
-  this.header           = $('<div class="header"></div>')
+  this.header           = $('<div class="header"></div>');
   this.spacer           = $('<div class="spacer"></div>');
   this.label            = $('<div class="label"></div>');
   
@@ -52,7 +52,7 @@ function DisplayControls( _timelineComponent ) {
     // buttons
     $.map(GLOBAL.markerTypes, function (v,k) {
       var mt = k.toString();
-      var el = $('<div class="button button-marker-visibility active type-' + mt + '" data-target=' + mt + '>' + mt.toProperCase() + '<span class="counter">' + v + '</span></div>');
+      var el = $('<div class="button button-icon button-marker-visibility active type-' + mt + '" data-target=' + mt + '>' + mt.toProperCase() + '<span class="counter">' + v + '</span></div>');
       el.click(function (event) {
         GLOBAL.observer.toggleMarkerVisibility( $(this).data("target") );
       });

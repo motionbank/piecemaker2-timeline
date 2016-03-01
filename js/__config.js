@@ -4,7 +4,9 @@ Array.prototype.pushMany = function ( _v, _n ) {
   }
 }
 
-// ["video", "data", "scene", "marker","title","comment","note"]
+var dataConfig = {};
+
+dataConfig.MarkerTypes = ["marker", "video", "data", "scene", "title", "comment", "note"];
 // var markerSettings = {
 //   "video": {"color":"#5b95fc"}
 // };
@@ -17,7 +19,7 @@ var PERSON = "person";
 var ORT = "ort";
 var REFERENZ = "referenz";
 
-var markerTypes = [TITEL, PERSON, KOMMENTAR, ASSET, TECHNIK, ORT, REFERENZ];
+// var markerTypes = [TITEL, PERSON, KOMMENTAR, ASSET, TECHNIK, ORT, REFERENZ];
 var markerTypePossibility = new Array();
 markerTypePossibility.pushMany( TITEL, 30);
 markerTypePossibility.pushMany( TECHNIK, 3);
