@@ -47,6 +47,7 @@
   border-right: 8px solid;
   transition-property: border-width;
   transition-duration: 120ms;
+  background: #989898;
 /*  border-radius: 5px;*/
 }
 
@@ -124,7 +125,7 @@ marker in focus
 }
 
 .marker.is-focused .label{
-  background: transparent;
+  background: #989898;
   padding: 0px 8px 0;
 }
 

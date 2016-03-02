@@ -34,3 +34,7 @@
   font-weight: normal;
   cursor: pointer;
 }
+
+.add-marker-controls .button.submit {
+  margin-top: 10px;
+}

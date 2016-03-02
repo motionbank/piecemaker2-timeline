@@ -7,18 +7,20 @@ function AddMarkerControls() {
   this.inputIsPoint = $('<input class="marker-is-point" type="checkbox" />');
   this.typeContainer = $('<div class="type-container"></div>');
   this.templateContainer = $('<div class="template-container"></div>');
-  this.btnAddMarker = $('<div class="button submit hidden">Add Marker</div>');
+  this.btnAddPoint = $('<div class="button submit hidden">Add point</div>');
+  this.btnAddRange = $('<div class="button submit hidden">Add range</div>');
   
   this.titleFields = {};
   
   this.el.append(
-    '<div class="header">New Marker <span class="close-add-marker hidden">Close</span></div>',
+    '<div class="header">New Event <span class="close-add-marker hidden">Close</span></div>',
     '<div class="spacer"></div>',
     '<label for="">Type</label>',
     this.typeContainer,
     this.templateContainer,
-    '<div class="spacer"></div>',
-    this.btnAddMarker 
+    this.btnAddPoint,
+    this.btnAddRange
+     
   );
   
   this.el.find('.close-add-marker').click(function(event) {
@@ -36,9 +38,6 @@ function AddMarkerControls() {
     '<div class="spacer"></div>',
     '<label for="">Description</label>',
     this.inputDescription,
-    '<div class="spacer"></div>',
-    '<label for="">Is Queue?</label>',
-    this.inputIsPoint,
     '<div class="spacer"></div>'
   );
   
@@ -81,9 +80,6 @@ function AddMarkerControls() {
           '<div class="spacer"></div>',
           '<label for="">Description</label>',
           self.inputDescription.clone(),
-          '<div class="spacer"></div>',
-          '<label for="">Is Queue?</label>',
-          self.inputIsPoint.clone(),
           '<div class="spacer"></div>'
         );
         
@@ -135,7 +131,8 @@ function AddMarkerControls() {
       
       // show add button and close
       self.el.find('.close-add-marker').removeClass("hidden");
-      self.btnAddMarker.removeClass("hidden");
+      self.btnAddRange.removeClass("hidden");
+      self.btnAddPoint.removeClass("hidden");
       
       // hide all button related custom templates
       self.el.find(".input-template").removeClass("active");
@@ -159,12 +156,16 @@ function AddMarkerControls() {
   });
   
   
-  this.btnAddMarker.click(function(event) {
+  this.btnAddRange.click(function(event) {
+    self.createMarker(true);
+  });
+  
+  this.btnAddPoint.click(function(event) {
     self.createMarker();
   });
   
   // create new marker and call addMarker on all targets
-  this.createMarker = function () {
+  this.createMarker = function ( _range ) {
     
     var tc = GLOBAL.observer.getTimecode();
     var activeTemplate = self.el.find(".input-template.active").first();
@@ -172,7 +173,7 @@ function AddMarkerControls() {
       label:        activeTemplate.find("input.marker-label").val() || "Untitled",
       description:  activeTemplate.find("textarea.marker-description").val() || "",
       start:        tc,
-      end:          (activeTemplate.find("input.marker-is-point").is(":checked")) ? tc : tc + 10000,
+      end:          ( _range ) ? tc + 10000 : tc,
       type:         this.typeContainer.find(".button.active").first().data("type") || "No_type",
       fields:       activeTemplate.find("input.marker-label").data("fields") || {}
     };
@@ -187,11 +188,11 @@ function AddMarkerControls() {
   this.afterCreateMarker = function () {
     self.el.find('.close-add-marker').addClass("hidden");
     self.typeContainer.find(".button").removeClass("active");
-    self.btnAddMarker.addClass("hidden");
+    self.btnAddRange.addClass("hidden");
+    self.btnAddPoint.addClass("hidden");
     self.el.find(".input-template").removeClass("active");
     self.el.find("input.marker-label").val("");
     self.el.find("textarea.marker-description").val("");
-    self.el.find("input.marker-is-point").prop( "checked", false );
   }
   
   this.addTarget = function ( _target ) {

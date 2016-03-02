@@ -310,6 +310,7 @@ function TimelineGraph( _timelineComponent, _markerData ) {
     this.background.mousedown(function(event) {
       that.impactPosition = that.component.locX(event.pageX) + that.position;
       that.setDraggingState();
+      that.unselectMarker();
     });
     this.el.on({
       'mousemove': function (event) {
@@ -355,7 +356,7 @@ function TimelineGraph( _timelineComponent, _markerData ) {
   this.mousedownHandler = function (event) {
     if (this.selectedMarker) {
       if (!this.selectedMarker.isHovered && !this.component.markerContextMenu.isFocused) {
-        this.unselectMarker();
+        // this.unselectMarker();
         this.closeContextMenu();
       }
     }
