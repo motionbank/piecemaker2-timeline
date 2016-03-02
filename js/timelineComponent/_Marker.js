@@ -208,7 +208,15 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
       });
     }
   }
-
+  
+  this.delete = function () {
+    if (window.confirm("Do you want to delete this marker?")) {
+      this.deleteOriginalData();
+      this.parentGraph.deleteMarker(this);
+      this.el.remove();
+    }
+  }
+  
   this.deleteOriginalData = function (cb) {
     var api = GLOBAL.apiClient;
     var self = this;

@@ -66,6 +66,11 @@ function TimelineGraph( _timelineComponent, _markerData ) {
     this.alignMarkers();
   }
   
+  this.deleteMarker = function ( _marker ) {
+    this.markers.splice(this.markers.indexOf(_marker), 1);
+    this.alignMarkers();
+  }
+  
   this.addMarker = function ( _data ) {
     var m = new Marker(this.component, this, this.markers.length, _data );
     this.markers.push( m );

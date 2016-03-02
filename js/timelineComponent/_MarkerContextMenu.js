@@ -9,7 +9,7 @@ function MarkerContextMenu( _timelineComponent ) {
   this.btn_goToStart    = $('<div class="marker-context-button go-start-timeline">Move timecode to start</div>');
   this.btn_goToEnd      = $('<div class="marker-context-button go-end-timeline">Move timecode to end</div>');
   this.btn_edit         = $('<div class="marker-context-button unavailable edit-marker">Edit</div>');
-  this.btn_delete       = $('<div class="marker-context-button unavailable delete-marker">Delete</div>');
+  this.btn_delete       = $('<div class="marker-context-button delete-marker">Delete</div>');
   this.btn_toPoint      = $('<div class="marker-context-button to-point-marker hidden">Convert to queue <span class="context-icon">&#x2022;</span></div>');
   this.btn_expand       = $('<div class="marker-context-button expand-marker">Convert to duration <span class="context-icon">&#x27F7;</span></div>');
   this.divider          = $('<div class="divider"></div>');
@@ -189,6 +189,12 @@ function MarkerContextMenu( _timelineComponent ) {
     // this.btn_edit.click(function(event){
     //   that.afterChange();
     // });
+    
+    // delete
+    this.btn_delete.click(function(event){
+      that.marker.delete();
+      that.afterChange();
+    });
   }
   
   this.afterChange = function ( _saveMarkerData ) {
