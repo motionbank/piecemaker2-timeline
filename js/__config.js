@@ -6,7 +6,8 @@ Array.prototype.pushMany = function ( _v, _n ) {
 
 var dataConfig = {};
 
-dataConfig.MarkerTypes = ["marker", "video", "data", "scene", "title", "comment", "note"];
+
+
 // var markerSettings = {
 //   "video": {"color":"#5b95fc"}
 // };
@@ -50,6 +51,16 @@ function randomText( _n ) {
     // _LOCAL_IDX++;
   }
   return st;
+}
+
+function randomTextArray( _n, _numbered ) {
+  var ar = [];
+  for (var i = 0; i < _n; i++) {
+    var t = (_numbered) ? (i + 1) + ". " : "";
+    t += randomText( Math.ceil(Math.random()*5));
+    ar.push( t );
+  }
+  return ar;
 }
 
 var stopList = [

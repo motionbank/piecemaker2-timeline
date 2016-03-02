@@ -43,6 +43,7 @@
 
 .control-component {
   pointer-events: none;
+  position: relative;
 }
 
 .control-component > *{
@@ -127,4 +128,33 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   opacity: 1;
+}
+
+.control-component .input-template {
+  display: none;
+}
+
+.control-component .input-template.active {
+  display: block;
+}
+
+.control-component .template-container {
+  padding: 0;
+  margin: 0;
+  width: initial;
+}
+
+.control-component .custom-template {
+  position: absolute;
+  top: 0;
+  right: -800px;
+  width: 800px;
+  background: black;
+  padding: 10px 10px 5px 10px;
+  border-left: 1px solid #333;
+}
+
+.control-component .custom-template .button {
+  display: inline-block;
+  margin: 0 5px 5px 0;
 }

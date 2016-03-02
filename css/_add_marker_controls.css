@@ -6,6 +6,12 @@
   padding: 0 0 10px 0;
 }
 
+.add-marker-controls .header {
+  width: 290px;
+}
+
+.add-marker-controls .template-container .input-template > input,
+.add-marker-controls .template-container .input-template > textarea,
 .add-marker-controls > * {
   width: 280px;
 }
@@ -20,4 +26,10 @@
 .add-marker-controls .type-container .button {
   display: inline-block;
   margin: 0 5px 5px 0;
+}
+
+.add-marker-controls .close-add-marker {
+  float:right;
+  font-weight: normal;
+  cursor: pointer;
 }
