@@ -273,9 +273,12 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     }
     
     pos = Math.min(pos, this.parentGraph.scrollXRel() + this.parentGraph.viewPortWidthRel() );
-    pos = this.parentGraph.snapToPlayhead(pos, 20);
+    //pos = this.parentGraph.snapToPlayhead(pos, 20);
     var n = pos - this.x;
     this.setLength(n);
+
+    var time = pos * GLOBAL.duration;
+    GLOBAL.observer.setTimecode(time);
   }
   
   // left handle dragged
@@ -295,10 +298,13 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     pos = Math.max( pos, this.parentGraph.scrollXRel() );
     
     // if (GLOBAL.observer.shiftDown)
-    pos = this.parentGraph.snapToPlayhead(pos, 20);
+    //pos = this.parentGraph.snapToPlayhead(pos, 20);
     
     this.setLength( end - pos, false );
     this.setX(pos);
+
+    var time = pos * GLOBAL.duration;
+    GLOBAL.observer.setTimecode(time);
   }
   
   // whole marker dragged
@@ -308,11 +314,14 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     var max = ((this.parentGraph.width - this.length * this.parentGraph.width)/ this.parentGraph.width);
     var x = pos - this.impactPosition;
     
-    x = this.parentGraph.snapToPlayhead(x, 20);
-    x = this.parentGraph.snapToPlayhead(x, 20, this.length);
+    //x = this.parentGraph.snapToPlayhead(x, 20);
+    //x = this.parentGraph.snapToPlayhead(x, 20, this.length);
     x = UTILS_restrict( x, 0, max);
     
     this.setX(x);
+
+    var time = x * GLOBAL.duration;
+    GLOBAL.observer.setTimecode(time);
   }
   
   /*
