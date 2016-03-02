@@ -12,6 +12,7 @@
 - edit markers
 - style of small range markers (with a duration)
 - X keep TL-item selection (only click in empty TL or other item de-selects)
+- add event controls: change title selection list layout
 
 ## Wishlist TL
 
