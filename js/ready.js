@@ -80,7 +80,7 @@ jQuery( function ($) {
                 GLOBAL.duration = duration;
 
                 app.video = new VideoComponent(
-                    // 'http://'+       /* einmal http zu viel */
+                    'http://' +
                     appConfig.media.host +
                     appConfig.media.base_url + '/' +
                     (video.fields['local-file'] || (video.fields.title +'.mp4')) );
