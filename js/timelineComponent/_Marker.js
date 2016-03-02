@@ -207,6 +207,17 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
       });
     }
   }
+
+  this.deleteOriginalData = function (cb) {
+    var api = GLOBAL.apiClient;
+    var self = this;
+    var template = GLOBAL.marker_data_template;
+    if ( this.original_data.event_group_id ) {
+      api.deleteEvent(template.event_group_id,this.original_data.id,cb);
+    } else {
+      cb();
+    }
+  }
   
   this.graphResizeEndHandler = function () {
     this.calcLabelWidthMax();
