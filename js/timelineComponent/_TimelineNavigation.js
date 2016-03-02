@@ -76,24 +76,30 @@ function TimelineNavigation( _timelineComponent ) {
   this.setupEvents = function () {
     var that = this;
     this.background.mousedown(function(event) {
+      event.preventDefault();
       that.impactPosition = that.handleWidth/2;
       that.setDraggingState("background");
       that.draggingFunction = that.observeBackground;
       that.mousemoveHandler(event);
+      return false;
     });
     this.handleRight.mousedown(function(event) {
+      event.preventDefault();
       // that.impactPosition = event.pageX - that.handlePosition;
       that.handleRight.addClass("is-dragged");
       that.setDraggingState("handle");
       that.draggingFunction = that.observeHandleRight;
       that.mousemoveHandler(event);
+      return false;
     });
     this.handleLeft.mousedown(function(event) {
+      event.preventDefault();
       that.impactPosition = that.handlePosition + that.handleWidth;
       that.handleLeft.addClass("is-dragged");
       that.setDraggingState("handle");
       that.draggingFunction = that.observeHandleLeft;
       that.mousemoveHandler(event);
+      return false;
     });
     this.el.on({
       'mouseenter': function (event) {

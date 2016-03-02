@@ -189,7 +189,8 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
         });
       });
     } else {
-      var fields = $.extend( template.fields,{
+      var fields = $.extend( template.fields, self.fields );
+      fields = $.extend( fields,{
         description: self.description,
         title: self.title,
         'created_by_user_id': GLOBAL.user.id,
