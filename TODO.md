@@ -8,10 +8,10 @@
 - X marker typen dynamisch
 - link zu PM2 mit kontext
 - shortcuts: n -> new, i -> set in, o -> set out
-- default color markers unknown type
+- X default color markers unknown type => #989898
 - edit markers
 - style of small range markers (with a duration)
-- keep TL-item selection (only click in empty TL or other item de-selects)
+- X keep TL-item selection (only click in empty TL or other item de-selects)
 
 ## Wishlist TL
 
