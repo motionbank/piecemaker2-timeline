@@ -128,12 +128,14 @@ function TimelineGraph( _timelineComponent, _markerData ) {
   }
   
   this.unselectMarker = function ( _delay ) {
-    this.selectedMarker.unselect(_delay);
-    this.selectedMarker = null;
-    this.el.removeClass("marker-selected");
+    if (this.selectedMarker) {
+      this.selectedMarker.unselect(_delay);
+      this.selectedMarker = null;
+      this.el.removeClass("marker-selected");
     
-    // ????
-    app.displayControls.unsetMarker();
+      // ????
+      app.displayControls.unsetMarker();
+    }
   }
   
   this.dragMarker = function () {
@@ -308,9 +310,11 @@ function TimelineGraph( _timelineComponent, _markerData ) {
   this.setupEvents = function () {
     var that = this;
     this.background.mousedown(function(event) {
+      // console.log("GRAPH: local background mouse down");
       that.impactPosition = that.component.locX(event.pageX) + that.position;
       that.setDraggingState();
       that.unselectMarker();
+      that.closeContextMenu();
     });
     this.el.on({
       'mousemove': function (event) {
@@ -354,6 +358,7 @@ function TimelineGraph( _timelineComponent, _markerData ) {
   }
   
   this.mousedownHandler = function (event) {
+    // console.log("GRAPH: global mouse down");
     if (this.selectedMarker) {
       if (!this.selectedMarker.isHovered && !this.component.markerContextMenu.isFocused) {
         // this.unselectMarker();
