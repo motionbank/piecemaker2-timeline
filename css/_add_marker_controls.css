@@ -4,6 +4,7 @@
   left: 20px;
   background: black;
   padding: 0 0 10px 0;
+  z-index: 100;
 }
 
 .add-marker-controls .header {

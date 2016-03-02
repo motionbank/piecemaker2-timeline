@@ -13,7 +13,12 @@ var GLOBAL = {
   markerTypes : null,
   videoConfig: {
     markerTypes: {
-      "marker": {}, 
+      "marker": { 
+        addMarkerConfig: {
+          template: "fixedLabelList",
+          labelList: randomTextArray( 60, true )
+        }
+      }, 
       "video": {}, 
       "data": {}, 
       "scene": {}, 

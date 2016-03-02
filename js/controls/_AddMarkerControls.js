@@ -94,10 +94,13 @@ function AddMarkerControls() {
           b.attr("data-label-list-template", "." + templateClass);
         
           // create custom template. all must have class custom-template
-          var template = $('<div class="custom-template"></div>').addClass(templateClass);
+          var template = $('<div class="custom-template"><label for="">Labels</label></div>').addClass(templateClass);
+          template.append('<div class="section-container label-container"></div>');
+          
           for (var i = 0; i < labelList.length; i++) {
             var text = labelList[i];
             var l = $('<div class="select-label-button button">' + text + '</div>');
+            l.addClass("type-" + key);
             var inputTarget = "marker-label";
             l.attr("data-input-target-name", "marker-label");
             l.attr("data-value", text);
@@ -105,7 +108,7 @@ function AddMarkerControls() {
             l.click(function(event) {
               customTemplate.find('[name="' + inputTarget + '"]').val( $(this).data("value") );
             });
-            template.append( l );
+            template.find(".label-container").append( l );
           }
           customTemplate.append(template);
         }

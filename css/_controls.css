@@ -146,12 +146,17 @@
 
 .control-component .custom-template {
   position: absolute;
-  top: 0;
+  top: 40px;
   right: -800px;
   width: 800px;
   background: black;
-  padding: 10px 10px 5px 10px;
+/*  padding: 10px 10px 5px 10px;*/
+  padding-bottom: 5px;
   border-left: 1px solid #333;
+}
+
+.control-component .custom-template .section-container {
+  padding: 0 10px;
 }
 
 .control-component .custom-template .button {
