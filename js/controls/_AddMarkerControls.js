@@ -9,6 +9,8 @@ function AddMarkerControls() {
   this.templateContainer = $('<div class="template-container"></div>');
   this.btnAddMarker = $('<div class="button submit hidden">Add Marker</div>');
   
+  this.titleFields = {};
+  
   this.el.append(
     '<div class="header">New Marker <span class="close-add-marker hidden">Close</span></div>',
     '<div class="spacer"></div>',
@@ -61,7 +63,7 @@ function AddMarkerControls() {
   
   // marker type buttons
   var _i = 0;
-  $.map(GLOBAL.videoConfig.markerTypes, function(v, key) {
+  $.map(GLOBAL.annotationConfig.markerTypes, function(v, key) {
     
     var b = $('<div class="button button-toggle type-' + key + '" data-type="' + key + '">' + key.toProperCase() + '</div>');
     
@@ -98,15 +100,19 @@ function AddMarkerControls() {
           template.append('<div class="section-container label-container"></div>');
           
           for (var i = 0; i < labelList.length; i++) {
-            var text = labelList[i];
+            var text = labelList[i].value;
             var l = $('<div class="select-label-button button">' + text + '</div>');
             l.addClass("type-" + key);
             var inputTarget = "marker-label";
             l.attr("data-input-target-name", "marker-label");
             l.attr("data-value", text);
+            l.attr("data-fields", JSON.stringify(labelList[i].fields));
+            
             // write data-value to target input val
             l.click(function(event) {
-              customTemplate.find('[name="' + inputTarget + '"]').val( $(this).data("value") );
+              customTemplate.find('[name="' + inputTarget + '"]')
+              .val( $(this).data("value") )
+              .attr("data-fields", JSON.stringify( $(this).data("fields") ) );
             });
             template.find(".label-container").append( l );
           }
@@ -167,9 +173,10 @@ function AddMarkerControls() {
       description:  activeTemplate.find("textarea.marker-description").val() || "",
       start:        tc,
       end:          (activeTemplate.find("input.marker-is-point").is(":checked")) ? tc : tc + 10000,
-      type:         this.typeContainer.find(".button.active").first().data("type") || "No_type"
+      type:         this.typeContainer.find(".button.active").first().data("type") || "No_type",
+      fields:       activeTemplate.find("input.marker-label").data("fields") || {}
     };
-    
+        
     this.afterCreateMarker();
         
     for (var i = 0; i < this.targets.length; i++) {

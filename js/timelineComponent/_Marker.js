@@ -34,6 +34,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   
   this.title              = data.label;
   this.type               = data.type;
+  this.fields             = data.fields || {};
 
   this.original_data      = data.data || {}; // the Picemaker2 event data
   

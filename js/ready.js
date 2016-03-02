@@ -11,21 +11,16 @@ var GLOBAL = {
   cachedHeight: 0,
   apiClient : null,
   markerTypes : null,
-  videoConfig: {
+  annotationConfig: {
     markerTypes: {
-      "marker": { 
-        addMarkerConfig: {
-          template: "fixedLabelList",
-          labelList: randomTextArray( 60, true )
-        }
-      }, 
+      "marker": {}, 
       "video": {}, 
       "data": {}, 
       "scene": {}, 
       "title": { 
         addMarkerConfig: {
           template: "fixedLabelList",
-          labelList: randomTextArray( 30, true )
+          labelList: [] //randomTextArray( 30, true )
         }
       }, 
       "comment": {}, 
@@ -34,7 +29,7 @@ var GLOBAL = {
   }
 }
 
-console.log(GLOBAL.videoConfig.markerTypes["title"].addMarkerConfig.labelList);
+console.log(GLOBAL.annotationConfig.markerTypes["title"].addMarkerConfig.labelList);
 
 var app = {
   timeline: null,
@@ -68,6 +63,29 @@ jQuery( function ($) {
         error : function (err) {
             console.log('Unable to load settings',err);
             getCurrentUser();
+        }
+    });
+    
+    $.ajax({
+        url: 'js/config/events.json',
+        success: function (data) {
+          var obj = $.parseJSON(data);
+            
+            for (var i = 0; i < obj.length; i++) {
+              var d = {
+                value: obj[i]["title"],
+                fields: {}
+              }
+              $.map(obj[i], function(val, key) {
+                if (key !== "title") {
+                  d.fields[key] = val;
+                }
+              });
+              GLOBAL.annotationConfig.markerTypes["title"].addMarkerConfig.labelList.push(d);
+            }
+        },
+        error : function (err) {
+            console.log('Unable to load events.json',err);
         }
     });
 
