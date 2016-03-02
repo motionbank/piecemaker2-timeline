@@ -26,10 +26,10 @@ function VideoComponent(_url) {
     clearInterval(self.updateInterval);
   }
 
-  // this.el.get(0).addEventListener('timeupdate', function(_evt) {
-  //   var t = parseInt(this.currentTime * 1000, 10);
-  //   if (GLOBAL.observer.getTimecode() !== t) {
-  //     GLOBAL.observer.setTimecode(t, self);
-  //   }
-  // });
+   //this.el.get(0).addEventListener('timeupdate', function(_evt) {
+   //  var t = parseInt(this.currentTime * 1000, 10);
+   //  if (GLOBAL.observer.getTimecode() !== t) {
+   //    GLOBAL.observer.setTimecode(t, self);
+   //  }
+   //});
 }

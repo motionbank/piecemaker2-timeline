@@ -9,9 +9,9 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   this.component          = _timelineComponent;
   this.parentGraph        = _timelineGraph;
   
-  this.el                 = $('<div class="marker is-visible"><div class="marker-inner"></div></div>');  
+  this.el                 = $('<div class="marker is-visible"><div class="marker-inner"></div></div>');
   this.handleRight        = $('<div class="handle handle-right"></div>');
-  this.handleLeft         = $('<div class="handle handle-left"></div>');  
+  this.handleLeft         = $('<div class="handle handle-left"></div>');
   this.background         = $('<div class="background"></div>');
   this.label              = $('<div class="label"></div>');
   
@@ -170,17 +170,40 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     console.log("MARKER: updateOriginalData");
     var api = GLOBAL.apiClient;
     var self = this;
-    if ( this.original_data ) {
+    var template = GLOBAL.marker_data_template;
+    if ( this.original_data.event_group_id ) {
       var data = this.original_data;
+      data.fields = $.extend(data.fields,{
+        'updated_by_user_id': GLOBAL.user.id,
+        'context_event_update_id': template.fields.context_event_id,
+        'context_event_update_type': template.fields.context_event_type
+      });
       api.getEvent(data.event_group,data.id,function(evt){
         api.updateEvent(evt.event_group,evt.id,{
-          utc_timestamp : data.context_time + self.start,
+          utc_timestamp : GLOBAL.context_time + self.start,
           duration : self.duration / 1000.0,
           token : evt.token
         },function(evt2){
-          evt2.context_time = data.context_time;
           self.original_data = evt2;
         });
+      });
+    } else {
+      var fields = $.extend( template.fields,{
+        description: self.description,
+        title: self.title,
+        'created_by_user_id': GLOBAL.user.id,
+        'movie_timestamp': self.start / 1000.0
+      });
+      var data = $.extend( template ,{
+        utc_timestamp: GLOBAL.context_time + self.start,
+        type: self.type,
+        duration: self.duration / 1000.0,
+        fields : fields
+      });
+
+      api.createEvent(template.event_group_id,data,function(mrkr){
+        self.original_data = mrkr;
+        console.log(mrkr);
       });
     }
   }

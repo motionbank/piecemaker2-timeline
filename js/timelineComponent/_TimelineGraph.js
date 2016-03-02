@@ -72,7 +72,7 @@ function TimelineGraph( _timelineComponent, _markerData ) {
     this.markerContainer.append( m.el );
     this.selectMarker(m);
     m.init();
-    // m.updateOriginalData();
+    m.updateOriginalData();
     this.alignMarkers();
     
     console.log("GRAPH: new marker added", m);

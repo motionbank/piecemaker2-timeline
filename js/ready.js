@@ -63,13 +63,21 @@ jQuery( function ($) {
         url: appConfig.settings+'/'+params.group+'/settings.json',
         success: function (data) {
             appConfig.media = data.media;
-            startInit();
+            getCurrentUser();
         },
         error : function (err) {
             console.log('Unable to load settings',err);
-            startInit();
+            getCurrentUser();
         }
     });
+
+    var getCurrentUser = function () {
+        api.whoAmI(function(user){
+            GLOBAL.user = user;
+            console.log(user);
+            startInit();
+        });
+    }
 
     var startInit = function () {
 
@@ -78,6 +86,14 @@ jQuery( function ($) {
 
                 var duration = video.duration * 1000;
                 GLOBAL.duration = duration;
+                GLOBAL.marker_data_template = {
+                    event_group_id: video.event_group_id,
+                    fields : {
+                        'created-with' : 'timeline-v0.0.0',
+                        'context-event-id': video.id,
+                        'context-event-type': video.type,
+                    }
+                };
 
                 app.video = new VideoComponent(
                     'http://' +
@@ -95,6 +111,7 @@ jQuery( function ($) {
                     function (events) {
 
                         var videoTime = video.utc_timestamp.getTime();
+                        GLOBAL.context_time = videoTime;
 
                         $.map(events, function (e) {
 
@@ -107,7 +124,6 @@ jQuery( function ($) {
                             }
 
                             var start = e.utc_timestamp.getTime() - videoTime;
-                            e.context_time = videoTime;
 
                             markerData.push({
                                 start: parseInt(start, 10),
