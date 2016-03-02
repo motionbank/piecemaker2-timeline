@@ -78,6 +78,7 @@ html body .transparent {
 /*  height: 119px;*/
   padding: 7px 0px;
   min-width: 240px;
+  max-width: 350px;
   opacity: 0;
   transition: opacity 150ms;
   transition-delay: 20ms;
@@ -98,6 +99,7 @@ html body .transparent {
   top: 0;
   left: 0;
   min-width: 240px;
+  max-width: 350px;
 /*  height: 186px;*/
   padding: 7px 0;
   margin-top:10px;
