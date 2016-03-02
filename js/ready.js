@@ -10,8 +10,26 @@ var GLOBAL = {
   cachedWidth: 0,
   cachedHeight: 0,
   apiClient : null,
-    markerTypes : null
+  markerTypes : null,
+  videoConfig: {
+    markerTypes: {
+      "marker": {}, 
+      "video": {}, 
+      "data": {}, 
+      "scene": {}, 
+      "title": { 
+        addMarkerConfig: {
+          template: "fixedLabelList",
+          labelList: randomTextArray( 30, true )
+        }
+      }, 
+      "comment": {}, 
+      "note": {}
+    }
+  }
 }
+
+console.log(GLOBAL.videoConfig.markerTypes["title"].addMarkerConfig.labelList);
 
 var app = {
   timeline: null,
