@@ -415,9 +415,15 @@ function TimelineGraph( _timelineComponent, _markerData ) {
     if (m = GLOBAL.observer.selectedMarker) {
       m.mousemoveHandler(event);
       
-      if ( m.draggingState === "background" && m.isPoint ) {
-        cP = m.x;
-        this.cursorTimecode = m.start;
+      if ( m.draggingState === "background" ) {
+        if (m.isPoint) {
+          cP = m.x;
+          this.cursorTimecode = m.start;
+        }
+        else if (GLOBAL.observer.shiftDown) {
+          cP = m.x;
+          this.cursorTimecode = m.start;
+        }
       }
     }
     

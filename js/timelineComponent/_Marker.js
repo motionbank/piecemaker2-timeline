@@ -323,7 +323,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     x = UTILS_restrict( x, 0, max);
 
     if (GLOBAL.observer.shiftDown) {
-      var time = pos * GLOBAL.duration;
+      var time = x * GLOBAL.duration;
       GLOBAL.observer.setTimecode(time);
     }
     else {

@@ -99,13 +99,15 @@ function TimecodeControls( _timelineComponent, _timelineGraph ) {
     }
     
     if ( m = ob.selectedMarker) {
-      if ( m.draggingState === "background" && m.isPoint ) {
-        cP = m.x * this.parentGraph.width;
-        this.cursorTimecode = m.start;
+      if ( m.draggingState === "background" ) {
+        if (m.isPoint || ob.shiftDown) {
+          cP = m.x * this.parentGraph.width;
+          this.cursorTimecode = m.start;
+        }
       }
     }
     
-    time = UTILS_getTimeFormatted( this.cursorTimecode ).total;
+    time = UTILS_getTimeFormatted( Math.round(this.cursorTimecode) ).total;
     
     if (cP + this.labelWidth - this.parentGraph.position > this.component.width) cP -= this.labelWidth +1;
     
