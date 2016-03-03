@@ -351,6 +351,10 @@ function TimelineGraph( _timelineComponent, _markerData ) {
     this.closeContextMenu();
   }
   
+  this.afterContentChangeHandler = function () {
+    this.alignMarkers();
+  }
+  
   // called in Marker
   // CUSTOM EVENT ???
   this.markerChangeHandler = function ( _marker ) {

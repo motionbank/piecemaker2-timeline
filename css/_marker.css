@@ -162,8 +162,18 @@ marker in focus
 
 
 .timeline-graph .marker.too-small:not(.is-point) .background {
-  border-top-width: 0px !important;
-  border-bottom-width: 0px !important;
+  border-top-width: 0px ;
+  border-bottom-width: 0px ;
+  border-left-width: 0px ;
+  border-right-width: 0px ;
+}
+
+.timeline-graph .marker.too-small:not(.is-point):hover .background {
+  border-top: 7px solid;
+  border-bottom: 7px solid;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  background: black;
 }
 
 .timeline-graph .marker.too-small .label {

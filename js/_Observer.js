@@ -81,11 +81,19 @@ function Observer( _app ) {
         break;
       // i
       case 73: 
-        if (m = self.selectedMarker) m.setStart(self.getTimecode());
+        if (m = self.selectedMarker) {
+          m.setStart(self.getTimecode());
+          m.afterChangeHandler();
+          app.timeline.afterContentChangeHandler();
+        }
         break;
       // o
       case 79: 
-        if (m = self.selectedMarker) m.setEnd(self.getTimecode());
+        if (m = self.selectedMarker) {
+          m.setEnd(self.getTimecode());
+          m.afterChangeHandler();
+          app.timeline.afterContentChangeHandler();
+        }
         break;
     }
   }

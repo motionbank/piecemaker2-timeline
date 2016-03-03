@@ -181,12 +181,12 @@ function AddMarkerControls() {
     var tc = GLOBAL.observer.getTimecode();
     var activeTemplate = self.el.find(".input-template.active").first();
     var data = {
-      label:        activeTemplate.find("input.marker-label").val() || "Untitled",
-      description:  activeTemplate.find("textarea.marker-description").val() || "",
+      label:        activeTemplate.find(".marker-label").val() || "Untitled",
+      description:  activeTemplate.find(".marker-description").val() || "",
       start:        tc,
       end:          ( _range ) ? tc + 10000 : tc,
       type:         this.typeContainer.find(".button.active").first().data("type") || "No_type",
-      fields:       activeTemplate.find("input.marker-label").data("fields") || {}
+      fields:       activeTemplate.find(".marker-label").data("fields") || {}
     };
         
     this.afterCreateMarker();

@@ -200,6 +200,7 @@ function MarkerContextMenu( _timelineComponent ) {
   this.afterChange = function ( _saveMarkerData ) {
     // this.component.graph.markerChangeHandler(this.marker);
     if (_saveMarkerData) this.marker.afterChangeHandler();
+    // ugly
     this.component.graph.afterContextActionHandler();
     this.marker = null;
   }

@@ -216,6 +216,10 @@ function TimelineComponent( _markerData ) {
     this.graph.resizeEndHandler();
   }
   
+  this.afterContentChangeHandler = function () {
+    this.graph.afterContentChangeHandler();
+  }
+  
   
   
   // _x => 0 - 1
