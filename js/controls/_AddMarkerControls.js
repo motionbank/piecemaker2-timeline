@@ -3,7 +3,8 @@ function AddMarkerControls() {
   this.targets = [];
   this.el = $('<div class="add-marker-controls control-component"></div>');
   this.inputDescription = $('<textarea class="marker-description" name="marker-description" id="" cols="30" rows="5"></textarea>');
-  this.inputLabel = $('<input class="marker-label" type="text" name="marker-label" value="">');
+  // this.inputLabel = $('<input class="marker-label" type="text" name="marker-label" value="">');
+  this.inputLabel = $('<textarea class="marker-label" name="marker-label" id=""></textarea>');
   this.inputIsPoint = $('<input class="marker-is-point" type="checkbox" />');
   this.typeContainer = $('<div class="type-container"></div>');
   this.templateContainer = $('<div class="template-container"></div>');
@@ -67,16 +68,17 @@ function AddMarkerControls() {
     var b = $('<div class="button button-toggle type-' + key + '" data-type="' + key + '">' + key.toProperCase() + '</div>');
     
     var inputTemplate = self.defaultTemplate.clone();
+    inputTemplate.find(".marker-label").addClass("type-" + key + "-background");
     
     if (v.addMarkerConfig) {
       
       // has custom template
       if (v.addMarkerConfig.template) {
-        var customTemplate = $('<div class="input-template"></div>');
+        var customTemplate = $('<div class="input-template label-list-template"></div>');
         customTemplate.append(
           '<div class="spacer"></div>',
           '<label for="">Label</label>',
-          self.inputLabel.clone(),
+          self.inputLabel.clone().addClass("type-" + key + "-background"),
           '<div class="spacer"></div>',
           '<label for="">Description</label>',
           self.inputDescription.clone(),
@@ -92,12 +94,12 @@ function AddMarkerControls() {
           b.attr("data-label-list-template", "." + templateClass);
         
           // create custom template. all must have class custom-template
-          var template = $('<div class="custom-template"><label for="">Labels</label></div>').addClass(templateClass);
+          var template = $('<div class="popup-template custom-template hidden"><label for="">Labels</label></div>').addClass(templateClass);
           template.append('<div class="section-container label-container"></div>');
           
           for (var i = 0; i < labelList.length; i++) {
             var text = labelList[i].value;
-            var l = $('<div class="select-label-button button">' + text + '</div>');
+            var l = $('<div class="button">' + text + '</div>');
             l.addClass("type-" + key);
             var inputTarget = "marker-label";
             l.attr("data-input-target-name", "marker-label");
@@ -106,14 +108,21 @@ function AddMarkerControls() {
             
             // write data-value to target input val
             l.click(function(event) {
+              // get input
               customTemplate.find('[name="' + inputTarget + '"]')
               .val( $(this).data("value") )
               .attr("data-fields", JSON.stringify( $(this).data("fields") ) );
+              template.addClass("hidden");
             });
             template.find(".label-container").append( l );
           }
           customTemplate.append(template);
         }
+        
+        customTemplate.find('textarea.marker-label').click(function(event) {
+          $(this).blur();
+          template.removeClass("hidden");
+        });
         
         // replace default template for this type
         inputTemplate = customTemplate;
@@ -128,6 +137,8 @@ function AddMarkerControls() {
     
     // events
     b.click(function(event) {
+      
+      self.el.find(".popup-template").addClass("hidden");
       
       // show add button and close
       self.el.find('.close-add-marker').removeClass("hidden");
@@ -191,8 +202,8 @@ function AddMarkerControls() {
     self.btnAddRange.addClass("hidden");
     self.btnAddPoint.addClass("hidden");
     self.el.find(".input-template").removeClass("active");
-    self.el.find("input.marker-label").val("");
-    self.el.find("textarea.marker-description").val("");
+    self.el.find(".marker-label").val("");
+    self.el.find(".marker-description").val("");
   }
   
   this.addTarget = function ( _target ) {

@@ -56,7 +56,7 @@ function MarkerContextMenu( _timelineComponent ) {
     this.currentTimecode = GLOBAL.observer.getTimecode();
     this.marker.hasContextAttached = true;
     
-    this.label.html("Marker " + _marker.id + ": " + _marker.type.toProperCase());
+    this.label.html(_marker.type.toProperCase());
     this.title.html( this.marker.title );
     
     this.isOpen = true;

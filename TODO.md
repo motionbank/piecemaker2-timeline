@@ -7,10 +7,11 @@
 - [x] darstellung vom video
 - [x] marker typen dynamisch
 - [ ] link zu PM2 mit kontext
-- [ ] shortcuts: n -> new, i -> set in, o -> set out
+- [x] shortcuts: i -> set in, o -> set out
+- [ ] shortcuts: n -> new
 - [x] default color markers unknown type => #989898
 - [ ] edit markers
-- [ ] style of small range markers (with a duration)
+- [x] style of small range markers (with a duration)
 - [x] keep TL-item selection (only click in empty TL or other item de-selects)
 - [ ] add event controls: change title selection list layout
 

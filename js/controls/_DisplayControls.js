@@ -110,7 +110,7 @@ function DisplayControls( _timelineComponent ) {
   }
   
   this.setMarker = function ( _m ) {
-    this.markerBlock.find(".info-content").html("Marker " + _m.id + ": " + _m.type.toProperCase() + "<br />" + _m.title );
+    this.markerBlock.find(".info-content").html(_m.type.toProperCase() + "<br />" + _m.title );
     this.markerBlock.show();
   }
   

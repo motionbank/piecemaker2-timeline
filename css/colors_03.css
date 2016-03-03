@@ -1,4 +1,5 @@
 
+html body .type-data-background,
 .marker.is-focused .label,
 .marker.is-selected .handle,
 .control-component .button,
@@ -10,6 +11,7 @@
   background-color: #989898;
 }
 
+html body .type-marker-background,
 .marker.type-marker.is-focused .label,
 .marker.type-marker.is-selected .handle,
 .control-component .button.type-marker,
@@ -17,6 +19,7 @@
   background-color: #ff4c3b;
 }
 
+html body .type-scene-background,
 .marker.type-scene.is-focused .label,
 .marker.type-scene.is-selected .handle,
 .control-component .button.type-scene,
@@ -24,6 +27,7 @@
   background-color: #ffa700;
 }
 
+html body .type-video-background,
 .marker.type-video.is-focused .label,
 .marker.type-video.is-selected .handle,
 .control-component .button.type-video,
@@ -31,6 +35,7 @@
   background-color: #5b95fc;
 }
 
+html body .type-title-background,
 .marker.type-title.is-focused .label,
 .marker.type-title.is-selected .handle,
 .control-component .button.type-title,
@@ -38,6 +43,7 @@
   background-color: #60c458;
 }
 
+html body .type-comment-background,
 .marker.type-comment.is-focused .label,
 .marker.type-comment.is-selected .handle,
 .control-component .button.type-comment,
@@ -45,6 +51,7 @@
   background-color: #d175c2;
 }
 
+html body .type-note-background,
 .marker.type-note.is-focused .label,
 .marker.type-note.is-selected .handle,
 .control-component .button.type-note,

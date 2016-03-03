@@ -58,7 +58,7 @@ function MarkerDetails( _timelineComponent )
       var e = UTILS_getTimeFormatted( Math.round(this.marker.end) ).total;
       var l = UTILS_getTimeFormatted( Math.round(this.marker.duration) ).total;
       // this.el.html( this.marker.type + "<br/>id " + this.marker.id + "<br/>start " + s + "<br/>end " + e + "<br/>duration " + l );
-      this.label.html( "Marker " + this.marker.id + ": " + this.marker.type.toProperCase() );
+      this.label.html( this.marker.type.toProperCase() );
       this.title.html( this.marker.title );
       this.content.find(".row.start .value").html( s );
       this.content.find(".row.end .value").html( e );

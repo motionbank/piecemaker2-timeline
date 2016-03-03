@@ -365,6 +365,9 @@ function TimelineGraph( _timelineComponent, _markerData ) {
         this.closeContextMenu();
       }
     }
+    else {
+      this.closeContextMenu();
+    }
   }
   
   // global
