@@ -665,7 +665,9 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     
     this.el.css({
       'left': (x*100) + "%",
-      'top': this.y,
+      // 'top': this.y,
+      top: 0,
+      "transform": "translate3d(0px," + this.y + "px,0px)",
       width: w,
       height: this.height
     });

@@ -30,7 +30,8 @@
   border-top: 8px solid white;
   border: 4px solid;*/
   pointer-events: none;
-  transition-property: top;
+  /*transition-property: top;*/
+  transition-property: transform;
   transition-duration: 150ms;
 /*  transition-delay: 50ms;*/
   
@@ -174,6 +175,11 @@ marker in focus
   border-left: 2px solid black;
   border-right: 2px solid black;
   background: black;
+}
+
+.timeline-graph .marker.is-selected.too-small:not(.is-point) .background {
+  border-top: 7px solid black;
+  border-bottom: 7px solid black;
 }
 
 .timeline-graph .marker.too-small .label {

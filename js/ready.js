@@ -223,7 +223,7 @@ jQuery( function ($) {
         app.timeline.setWidth(GLOBAL.width - 40);
 
         // set zoom
-        app.timeline.setGraphWidth(15000);
+        app.timeline.setGraphWidth(GLOBAL.width - 40);
 
         // GLOBAL.observer.setTimecode() synchronizes the timecode of all objects
         // that were added as listeners to GLOBAL.observer via GLOBAL.observer.addListener()
