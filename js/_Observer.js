@@ -99,6 +99,7 @@ function Observer( _app ) {
       // backspace
       case 8: 
         if (m = self.selectedMarker) {
+          event.preventDefault();
           m.delete();
           app.timeline.afterContentChangeHandler();
         }
