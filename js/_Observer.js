@@ -5,6 +5,7 @@ function Observer( _app ) {
   this.shiftDown = false;
   this.spaceDown = false;
   this.selectedMarker = null;
+  var self = this;
   
   // in milliseconds
   this.setTimecode = function ( _tc, _callee ) {
@@ -68,8 +69,15 @@ function Observer( _app ) {
       case 32: 
         this.spaceDown = true;
         $("body").addClass("key-space-down");
-      break;
-      
+        break;
+      // i
+      case 73: 
+        if (m = self.selectedMarker) m.setStart(self.getTimecode());
+        break;
+      // o
+      case 79: 
+        if (m = self.selectedMarker) m.setEnd(self.getTimecode());
+        break;
     }
   }
   
@@ -87,7 +95,7 @@ function Observer( _app ) {
       case 32: 
         this.spaceDown = false;
         $("body").removeClass("key-space-down");
-      break;
+        break;
       
     }
     // if (this.shiftDown) {
