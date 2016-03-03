@@ -95,6 +95,14 @@ function Observer( _app ) {
           app.timeline.afterContentChangeHandler();
         }
         break;
+        
+      // backspace
+      case 8: 
+        if (m = self.selectedMarker) {
+          m.delete();
+          app.timeline.afterContentChangeHandler();
+        }
+        break;
     }
   }
   
