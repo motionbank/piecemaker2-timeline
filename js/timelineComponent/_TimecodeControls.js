@@ -61,7 +61,7 @@ function TimecodeControls( _timelineComponent, _timelineGraph ) {
   }
   
   this.setTimecode = function ( _tc ) {
-
+    // this.positionLabel.text( UTILS_getTimeFormatted( Math.round(_tc) ).total );
   }
   
   this.updateTimecode = function ( _relPos ) {
@@ -109,6 +109,8 @@ function TimecodeControls( _timelineComponent, _timelineGraph ) {
     
     if (cP + this.labelWidth - this.parentGraph.position > this.component.width) cP -= this.labelWidth +1;
     
+    // time is sometimes different to actual timecode when dragging a marker + pressing shift
+    // round value
     this.positionLabel.css( "left", cP ).text( time );
     this.playheadShadow.css( "left", (relPos * 100) + "%" );
     if (this.isDragged) this.updateTimecode( relPos );

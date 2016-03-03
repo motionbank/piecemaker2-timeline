@@ -177,10 +177,6 @@ html body .transparent {
   opacity: 0.4;
 }
 
-.control-component .button .counter{
-  float: right;
-}
-
 
 #controls .information-block {
   position: fixed;

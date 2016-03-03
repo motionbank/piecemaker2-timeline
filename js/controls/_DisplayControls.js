@@ -106,7 +106,7 @@ function DisplayControls( _timelineComponent ) {
   }
   
   this.setTimecode = function ( _tc ) {
-    this.timecodeBlock.find(".info-content").text(UTILS_getTimeFormatted( _tc ).total );
+    this.timecodeBlock.find(".info-content").text(UTILS_getTimeFormatted( Math.round(_tc) ).total );
   }
   
   this.setMarker = function ( _m ) {

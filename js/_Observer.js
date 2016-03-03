@@ -1,4 +1,13 @@
 function Observer( _app ) {
+  /*
+   *  TODO
+   *  implement properties for states and remove them from TimelineGraph etc:
+   *    this.markerIsDragged( _which )        // _which = "handle" || "background"
+   *    this.navigationIsDragged( _which )    // _which = "handle" || "background"
+   *    ...
+   */
+  
+  
   this.app = _app;
   this.timecode = 0;
   this.listeners = new Array();
