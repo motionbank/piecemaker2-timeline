@@ -8,7 +8,7 @@
 
 
 
-html body .type-data-background,
+/*html body .type-data-background,
 .marker.type-data.is-focused .label,
 .marker.type-data.is-selected .handle,
 .control-component .button.type-data,
@@ -62,7 +62,7 @@ html body .type-note-background,
 .control-component .button.type-note,
 .marker.type-note .background {
   background-color: #9e7a60;
-}
+}*/
 
 
 /* default */
@@ -73,7 +73,7 @@ html body .type-note-background,
 
 
 
-.marker.type-data:not(.is-focused) .label,
+/*.marker.type-data:not(.is-focused) .label,
 .marker.type-data .background {
   color: #ffa188;
 }
@@ -106,7 +106,7 @@ html body .type-note-background,
 .marker.type-note:not(.is-focused) .label,
 .marker.type-note .background {
   color: #9e7a60;
-}
+}*/
 
 
 /*.marker.type-scene:not(.is-selected):hover .background {

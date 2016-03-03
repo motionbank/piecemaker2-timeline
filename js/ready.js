@@ -13,18 +13,31 @@ var GLOBAL = {
   markerTypes : null,
   annotationConfig: {
     markerTypes: {
-      "marker": {}, 
-      "video": {}, 
-      "data": {}, 
-      "scene": {}, 
-      "title": { 
+      "marker": {
+        color: "#ff4c3b"
+      }, 
+      "video": {
+        color: "#5b95fc"
+      }, 
+      "data": {
+        color: "#ffa188"
+      }, 
+      "scene": {
+        color: "#ffa700"
+      }, 
+      "title": {
+        color: "#60c458", 
         addMarkerConfig: {
           template: "fixedLabelList",
           labelList: [] //randomTextArray( 30, true )
         }
       }, 
-      "comment": {}, 
-      "note": {}
+      "comment": {
+        color: "#d175c2"
+      }, 
+      "note": {
+        color: "#9e7a60"
+      }
     }
   }
 }
@@ -161,6 +174,24 @@ jQuery( function ($) {
     }
 
     var finishInit = function () {
+      
+      // color setup
+      var additionalStyles = "";
+      $.map(GLOBAL.annotationConfig.markerTypes, function(val, key) {
+        if (val.color) {
+          additionalStyles += ""
+          + "html body .type-#type-background, "
+          + ".marker.type-#type.is-focused .label, "
+          + ".marker.type-#type.is-selected .handle, "
+          + ".control-component .button.type-#type, "
+          + ".marker.type-#type .background { background-color: #color; }"
+          + "\n .marker.type-#type:not(.is-focused) .label, "
+          + ".marker.type-#type .background { color: #color; }\n";
+          additionalStyles = additionalStyles.replace(/#type/g,key).replace(/#color/g,val.color);
+        }
+      });
+      $(document.head).append("<style>" + additionalStyles + "</style>");
+      
 
         GLOBAL.observer = new Observer(app);
 
