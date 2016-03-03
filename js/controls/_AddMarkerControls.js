@@ -198,4 +198,10 @@ function AddMarkerControls() {
   this.addTarget = function ( _target ) {
     this.targets.push( _target );
   }
+  
+  // EVENTS
+  
+  this.el.mousedown(function(event) {
+    GLOBAL.observer.unselectMarker();
+  });
 }
