@@ -1,14 +1,19 @@
 
-html body .type-data-background,
+/* default*/
 .marker.is-focused .label,
 .marker.is-selected .handle,
-.control-component .button,
-.marker.type-data .background,
+.control-component .button {
+  background-color: #989898;
+}
+
+
+
+html body .type-data-background,
 .marker.type-data.is-focused .label,
 .marker.type-data.is-selected .handle,
 .control-component .button.type-data,
 .marker.type-data .background {
-  background-color: #989898;
+  background-color: #ffa188;
 }
 
 html body .type-marker-background,
@@ -60,11 +65,17 @@ html body .type-note-background,
 }
 
 
+/* default */
 .marker:not(.is-focused) .label,
-.marker .background,
+.marker .background {
+  color: #989898;
+}
+
+
+
 .marker.type-data:not(.is-focused) .label,
 .marker.type-data .background {
-  color: #989898;
+  color: #ffa188;
 }
 
 .marker.type-marker:not(.is-focused) .label,
