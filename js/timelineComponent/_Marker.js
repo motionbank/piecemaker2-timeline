@@ -277,8 +277,10 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     var n = pos - this.x;
     this.setLength(n);
 
-    var time = pos * GLOBAL.duration;
-    GLOBAL.observer.setTimecode(time);
+    if (GLOBAL.observer.shiftDown) {
+      var time = pos * GLOBAL.duration;
+      GLOBAL.observer.setTimecode(time);
+    }
   }
   
   // left handle dragged
@@ -302,9 +304,11 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     
     this.setLength( end - pos, false );
     this.setX(pos);
-
-    var time = pos * GLOBAL.duration;
-    GLOBAL.observer.setTimecode(time);
+    
+    if (GLOBAL.observer.shiftDown) {
+      var time = pos * GLOBAL.duration;
+      GLOBAL.observer.setTimecode(time);
+    }
   }
   
   // whole marker dragged
@@ -320,8 +324,10 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     
     this.setX(x);
 
-    var time = x * GLOBAL.duration;
-    GLOBAL.observer.setTimecode(time);
+    if (GLOBAL.observer.shiftDown) {
+      var time = pos * GLOBAL.duration;
+      GLOBAL.observer.setTimecode(time);
+    }
   }
   
   /*
@@ -540,8 +546,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   this.setDraggingState = function ( _state ) {
     this.draggingState = _state;
     this.parentGraph.dragMarker();
-    this.parentGraph.selectMarker(this);
-    // this.select();
+    GLOBAL.observer.selectMarker(this);
     this.el.addClass("is-dragged");
     this.component.el.addClass("marker-dragging marker-" + _state + "-dragging");
   }

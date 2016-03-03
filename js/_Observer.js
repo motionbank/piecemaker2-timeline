@@ -4,6 +4,7 @@ function Observer( _app ) {
   this.listeners = new Array();
   this.shiftDown = false;
   this.spaceDown = false;
+  this.selectedMarker = null;
   
   // in milliseconds
   this.setTimecode = function ( _tc, _callee ) {
@@ -21,6 +22,29 @@ function Observer( _app ) {
   
   this.getTimecodeRel = function () {
     return this.timecode / GLOBAL.duration;
+  }
+  
+  this.selectMarker = function ( _marker ) {
+    if (this.selectedMarker) {
+      this.unselectMarker();
+    }
+    this.selectedMarker = _marker;
+    _marker.select();
+    $('body').addClass("marker-selected");
+    
+    // ????
+    app.displayControls.setMarker( _marker );
+  }
+  
+  this.unselectMarker = function ( _delay ) {
+    if (this.selectedMarker) {
+      this.selectedMarker.unselect(_delay);
+      this.selectedMarker = null;
+      $('body').addClass("marker-selected");
+    
+      // ????
+      app.displayControls.unsetMarker();
+    }
   }
   
   this.toggleMarkerVisibility = function ( _markerClass ) {

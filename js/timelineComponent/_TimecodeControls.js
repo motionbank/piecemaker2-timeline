@@ -77,6 +77,7 @@ function TimecodeControls( _timelineComponent, _timelineGraph ) {
       this.labelWidth = this.positionLabel.outerWidth();
     }
     var pg = this.parentGraph;
+    var ob = GLOBAL.observer;
     var x = UTILS_restrict( this.component.locX(event.pageX), 0, this.component.width );
     var relPos = pg.mapScreenPosition( x );
     var p = relPos;
@@ -97,10 +98,10 @@ function TimecodeControls( _timelineComponent, _timelineGraph ) {
       this.cursorTimecode = Math.round( relPos * GLOBAL.duration );
     }
     
-    if (pg.selectedMarker) {
-      if ( pg.selectedMarker.draggingState === "background" && pg.selectedMarker.isPoint ) {
-        cP = pg.selectedMarker.x * this.parentGraph.width;
-        this.cursorTimecode = pg.selectedMarker.start;
+    if ( m = ob.selectedMarker) {
+      if ( m.draggingState === "background" && m.isPoint ) {
+        cP = m.x * this.parentGraph.width;
+        this.cursorTimecode = m.start;
       }
     }
     

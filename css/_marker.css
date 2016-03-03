@@ -89,12 +89,12 @@ marker selected
   pointer-events: none;
 }
 
-.timeline-graph.marker-selected .marker-details {
+body.marker-selected .marker-details {
 /*  display: none !important;*/
   z-index: 100;
 }
 
-.timeline-graph.marker-selected .marker {
+body.marker-selected .marker {
 /*  display: none !important;*/
 /*  pointer-events: none;*/
 }

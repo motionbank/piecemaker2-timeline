@@ -28,7 +28,7 @@ function TimelineGraph( _timelineComponent, _markerData ) {
   
   this.rows                   = 0;
   
-  this.selectedMarker         = null;
+  // this.selectedMarker         = null;
   this.markerIsDragged        = false;
   this.isFocused              = false;
   this.markerHasChanged       = true;
@@ -75,7 +75,7 @@ function TimelineGraph( _timelineComponent, _markerData ) {
     var m = new Marker(this.component, this, this.markers.length, _data );
     this.markers.push( m );
     this.markerContainer.append( m.el );
-    this.selectMarker(m);
+    GLOBAL.observer.selectMarker(m);
     m.init();
     m.updateOriginalData();
     this.alignMarkers();
@@ -104,7 +104,7 @@ function TimelineGraph( _timelineComponent, _markerData ) {
   this.openContextMenu = function ( _marker, event ) {
     if (this.component.markerContextMenu.isOpen) this.closeContextMenu();
     this.component.el.addClass("marker-context-open");
-    this.selectMarker(_marker);
+    GLOBAL.observer.selectMarker(_marker);
     this.component.markerContextMenu.open(_marker, event);
   }
   
@@ -115,28 +115,28 @@ function TimelineGraph( _timelineComponent, _markerData ) {
     }
   }
   
-  this.selectMarker = function ( _marker ) {
-    if (this.selectedMarker) {
-      this.unselectMarker();
-    }
-    this.selectedMarker = _marker;
-    _marker.select();
-    this.el.addClass("marker-selected");
-    
-    // ????
-    app.displayControls.setMarker( _marker );
-  }
-  
-  this.unselectMarker = function ( _delay ) {
-    if (this.selectedMarker) {
-      this.selectedMarker.unselect(_delay);
-      this.selectedMarker = null;
-      this.el.removeClass("marker-selected");
-    
-      // ????
-      app.displayControls.unsetMarker();
-    }
-  }
+  // this.selectMarker = function ( _marker ) {
+  //   if (this.selectedMarker) {
+  //     this.unselectMarker();
+  //   }
+  //   this.selectedMarker = _marker;
+  //   _marker.select();
+  //   this.el.addClass("marker-selected");
+  //
+  //   // ????
+  //   app.displayControls.setMarker( _marker );
+  // }
+  //
+  // this.unselectMarker = function ( _delay ) {
+  //   if (this.selectedMarker) {
+  //     this.selectedMarker.unselect(_delay);
+  //     this.selectedMarker = null;
+  //     this.el.removeClass("marker-selected");
+  //
+  //     // ????
+  //     app.displayControls.unsetMarker();
+  //   }
+  // }
   
   this.dragMarker = function () {
     this.closeContextMenu();
@@ -313,7 +313,7 @@ function TimelineGraph( _timelineComponent, _markerData ) {
       // console.log("GRAPH: local background mouse down");
       that.impactPosition = that.component.locX(event.pageX) + that.position;
       that.setDraggingState();
-      that.unselectMarker();
+      GLOBAL.observer.unselectMarker();
       that.closeContextMenu();
     });
     this.el.on({
@@ -359,8 +359,8 @@ function TimelineGraph( _timelineComponent, _markerData ) {
   
   this.mousedownHandler = function (event) {
     // console.log("GRAPH: global mouse down");
-    if (this.selectedMarker) {
-      if (!this.selectedMarker.isHovered && !this.component.markerContextMenu.isFocused) {
+    if (GLOBAL.observer.selectedMarker) {
+      if (!GLOBAL.observer.selectedMarker.isHovered && !this.component.markerContextMenu.isFocused) {
         // this.unselectMarker();
         this.closeContextMenu();
       }
@@ -374,10 +374,10 @@ function TimelineGraph( _timelineComponent, _markerData ) {
       this.unsetDraggingState();
     }
     
-    if (this.selectedMarker) {
+    if (m = GLOBAL.observer.selectedMarker) {
       this.checkMarkers();
       if (this.markerIsDragged) {
-        this.selectedMarker.mouseupHandler(event);
+        m.mouseupHandler(event);
         this.undragMarker(event);
       }
     }
@@ -405,12 +405,12 @@ function TimelineGraph( _timelineComponent, _markerData ) {
       cP = this.mapScreenPosition( this.component.width/2 );
     }
 
-    if (this.selectedMarker) {
-      this.selectedMarker.mousemoveHandler(event);
+    if (m = GLOBAL.observer.selectedMarker) {
+      m.mousemoveHandler(event);
       
-      if ( this.selectedMarker.draggingState === "background" && this.selectedMarker.isPoint ) {
-        cP = this.selectedMarker.x;
-        this.cursorTimecode = this.selectedMarker.start;
+      if ( m.draggingState === "background" && m.isPoint ) {
+        cP = m.x;
+        this.cursorTimecode = m.start;
       }
     }
     
