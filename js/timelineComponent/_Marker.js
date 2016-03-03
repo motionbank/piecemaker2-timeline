@@ -299,7 +299,6 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     
     pos = Math.max( pos, this.parentGraph.scrollXRel() );
     
-    // if (GLOBAL.observer.shiftDown)
     //pos = this.parentGraph.snapToPlayhead(pos, 20);
     
     this.setLength( end - pos, false );
