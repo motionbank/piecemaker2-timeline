@@ -8,8 +8,8 @@ function AddMarkerControls() {
   this.inputIsPoint = $('<input class="marker-is-point" type="checkbox" />');
   this.typeContainer = $('<div class="type-container"></div>');
   this.templateContainer = $('<div class="template-container"></div>');
-  this.btnAddPoint = $('<div class="button submit hidden">Add point</div>');
-  this.btnAddRange = $('<div class="button submit hidden">Add range</div>');
+  this.btnAddPoint = $('<div class="button button-action submit hidden">Add point</div>');
+  this.btnAddRange = $('<div class="button button-action submit hidden">Add range</div>');
   
   this.titleFields = {};
   
@@ -99,7 +99,7 @@ function AddMarkerControls() {
           
           for (var i = 0; i < labelList.length; i++) {
             var text = labelList[i].value;
-            var l = $('<div class="button">' + text + '</div>');
+            var l = $('<div class="button button-numbered"><span>' + (i+1) + '</span>' + text + '</div>');
             l.addClass("type-" + key);
             var inputTarget = "marker-label";
             l.attr("data-input-target-name", "marker-label");
