@@ -278,7 +278,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     this.setLength(n);
 
     if (GLOBAL.observer.shiftDown) {
-      var time = pos * GLOBAL.duration;
+      var time = Math.round(pos * GLOBAL.duration);
       GLOBAL.observer.setTimecode(time);
     }
   }
@@ -305,7 +305,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     this.setX(pos);
     
     if (GLOBAL.observer.shiftDown) {
-      var time = pos * GLOBAL.duration;
+      var time = Math.round(pos * GLOBAL.duration);
       GLOBAL.observer.setTimecode(time);
     }
   }
@@ -324,7 +324,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     this.setX(x);
 
     if (GLOBAL.observer.shiftDown) {
-      var time = pos * GLOBAL.duration;
+      var time = Math.round(pos * GLOBAL.duration);
       GLOBAL.observer.setTimecode(time);
     }
   }
