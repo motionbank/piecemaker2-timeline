@@ -54,9 +54,9 @@ function MarkerDetails( _timelineComponent )
   this.updateText = function () 
   {
     if (this.marker) {
-      var s = UTILS_getTimeFormatted( this.marker.start ).total;
-      var e = UTILS_getTimeFormatted( this.marker.end ).total;
-      var l = UTILS_getTimeFormatted( this.marker.duration ).total;
+      var s = UTILS_getTimeFormatted( Math.round(this.marker.start) ).total;
+      var e = UTILS_getTimeFormatted( Math.round(this.marker.end) ).total;
+      var l = UTILS_getTimeFormatted( Math.round(this.marker.duration) ).total;
       // this.el.html( this.marker.type + "<br/>id " + this.marker.id + "<br/>start " + s + "<br/>end " + e + "<br/>duration " + l );
       this.label.html( "Marker " + this.marker.id + ": " + this.marker.type.toProperCase() );
       this.title.html( this.marker.title );

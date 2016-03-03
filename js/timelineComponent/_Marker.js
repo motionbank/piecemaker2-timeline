@@ -278,7 +278,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     this.setLength(n);
 
     if (GLOBAL.observer.shiftDown) {
-      var time = Math.round(pos * GLOBAL.duration);
+      var time = pos * GLOBAL.duration;
       GLOBAL.observer.setTimecode(time);
     }
   }
@@ -305,7 +305,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     this.setX(pos);
     
     if (GLOBAL.observer.shiftDown) {
-      var time = Math.round(pos * GLOBAL.duration);
+      var time = pos * GLOBAL.duration;
       GLOBAL.observer.setTimecode(time);
     }
   }
@@ -324,7 +324,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     this.setX(x);
 
     if (GLOBAL.observer.shiftDown) {
-      var time = Math.round(pos * GLOBAL.duration);
+      var time = pos * GLOBAL.duration;
       GLOBAL.observer.setTimecode(time);
     }
   }
@@ -358,7 +358,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   this.setX = function ( _x, _update ) {
     _update = (_update === undefined) ? true : _update;
     this.x = _x;
-    this.start = Math.round(this.x * GLOBAL.duration);
+    this.start = this.x * GLOBAL.duration;
     this.end = this.start + this.duration;
     this.checkPointState();
     if (_update) {
@@ -371,7 +371,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   this.setLength = function ( _l, _update ) {
     _update = (_update === undefined) ? true : _update;
     this.length = _l;
-    this.duration = Math.round(this.length * GLOBAL.duration);
+    this.duration = this.length * GLOBAL.duration;
     this.end = this.start + this.duration;
     this.checkPointState();
     if (_update) {
