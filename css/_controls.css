@@ -109,6 +109,10 @@
 /*  background-image: url(../img/icons/display_uncheck_30_30_02.png);*/
 }
 
+.control-component .button pre {
+  white-space: pre-wrap;
+}
+
 .control-component .button .counter{
   float: right;
 }
