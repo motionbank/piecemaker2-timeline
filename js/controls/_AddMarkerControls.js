@@ -69,6 +69,7 @@ function AddMarkerControls() {
     
     var inputTemplate = self.defaultTemplate.clone();
     inputTemplate.find(".marker-label").addClass("type-" + key + "-background");
+    inputTemplate.find(".marker-description").addClass("type-" + key + "-background");
     
     if (v.addMarkerConfig) {
       
@@ -81,7 +82,7 @@ function AddMarkerControls() {
           self.inputLabel.clone().addClass("type-" + key + "-background"),
           '<div class="spacer"></div>',
           '<label for="">Description</label>',
-          self.inputDescription.clone(),
+          self.inputDescription.clone().addClass("type-" + key + "-background"),
           '<div class="spacer"></div>'
         );
         
@@ -99,7 +100,7 @@ function AddMarkerControls() {
           
           for (var i = 0; i < labelList.length; i++) {
             var text = labelList[i].value;
-            var l = $('<div class="button button-numbered"><span>' + (i+1) + '</span>' + text + '</div>');
+            var l = $('<div class="button button-numbered"><span>' + (i+1) + '</span><pre>' + text + '</pre></div>');
             l.addClass("type-" + key);
             var inputTarget = "marker-label";
             l.attr("data-input-target-name", "marker-label");
