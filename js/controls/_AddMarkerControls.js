@@ -99,6 +99,14 @@ function AddMarkerControls() {
           // create custom template. all must have class custom-template
           var template = $('<div class="popup-template custom-template hidden"><label for="">Labels</label></div>').addClass(templateClass);
           template.append('<div class="section-container label-container"></div>');
+          
+          template.mouseenter(function(event) {
+            $(this).addClass("is-focused");
+          });
+          
+          template.mouseleave(function(event) {
+            $(this).removeClass("is-focused");
+          });
 
           for (var i = 0; i < labelList.length; i++) {
             var text = labelList[i].value;
@@ -200,6 +208,10 @@ function AddMarkerControls() {
   }
 
   this.afterCreateMarker = function() {
+    this.resetDisplay();
+  }
+  
+  this.resetDisplay = function () {
     self.el.find('.close-add-marker').addClass("hidden");
     self.typeContainer.find(".button").removeClass("active");
     self.btnAddRange.addClass("hidden");
@@ -238,8 +250,11 @@ function AddMarkerControls() {
   });
 
   this.mousedownHandler = function(event) {
+    self.el.find('.custom-template').each(function(index) {
+      if (!$(this).hasClass("is-focused")) $(this).addClass("hidden");
+    });
     if (!self.isFocused) {
-      self.el.find(".custom-template").addClass("hidden");
+      // self.el.find(".custom-template").addClass("hidden");
     }
   }
 }
