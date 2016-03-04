@@ -24,7 +24,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   this.x                  = data.start/GLOBAL.duration;     // 0 - 1
   this.y                  = 0;                              // 0 - 1
   this.length             = (data.end-data.start)/GLOBAL.duration;  // 0 - 1
-  this.height             = 17;                             // px
+  this.height             = 16;                             // px
   this.row                = 0;
   this.id                 = _id;
   this.start              = data.start;                     // mill
@@ -659,26 +659,24 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   this.update = function () {
     var w = (this.length*100) + "%";
     var x = this.x;
-    var ml = 0;
+    // var ml = 0;
     //                                    + offset to top because of timebar and navbar
     this.y = this.row * (this.height + 1) + 17*2 + 5;
     
     if (this.isPoint) {
       w = this.height;
       // x -= this.parentGraph.absToRel(8);
-      ml = -this.parentGraph.absToRel(8);
+      // ml = -this.parentGraph.absToRel(8);
     }
     
     this.el.css({
       'left': (x*100) + "%",
-      // 'top': this.y,
       top: 0,
-      // "margin-left": (ml*100) + "%",
       "transform": "translate3d(0px," + this.y + "px,0px)",
       width: w,
       height: this.height
-    });
-    this.el.find(".background").css({
+    })
+    .find(".background").css({
       height: this.height
     });
     if (this.markerDetail) this.markerDetail.updateText();
