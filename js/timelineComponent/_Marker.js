@@ -450,8 +450,11 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
       "border": borderWidth*2
     };
     if (this.isPoint) {
-      bounds.left = this.x - borderWidth;
-      bounds.right = bounds.left + borderWidth*2;
+      // bounds.left = this.x - borderWidth;
+      // bounds.right = bounds.left + borderWidth*2;
+      
+      bounds.left = this.x - tl.absToRel(this.component.graph.width/this.component.width*8);
+      bounds.right = bounds.left + tl.absToRel(this.component.graph.width/this.component.width*16);
     };
     return bounds;
   }
@@ -656,18 +659,21 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   this.update = function () {
     var w = (this.length*100) + "%";
     var x = this.x;
+    var ml = 0;
     //                                    + offset to top because of timebar and navbar
     this.y = this.row * (this.height + 1) + 17*2 + 5;
     
     if (this.isPoint) {
       w = this.height;
-      x -= this.parentGraph.absToRel(8);
+      // x -= this.parentGraph.absToRel(8);
+      ml = -this.parentGraph.absToRel(8);
     }
     
     this.el.css({
       'left': (x*100) + "%",
       // 'top': this.y,
       top: 0,
+      // "margin-left": (ml*100) + "%",
       "transform": "translate3d(0px," + this.y + "px,0px)",
       width: w,
       height: this.height

@@ -200,6 +200,8 @@ marker in focus
 .marker.is-point .background{
   border: 2px solid #404040;
   border-radius: 50%;
+  margin-left: -8px;
+  width: 16px;
 }
 
 .marker.is-on-screen .background {

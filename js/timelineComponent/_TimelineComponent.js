@@ -64,6 +64,7 @@ function TimelineComponent( _markerData ) {
       _v = Math.min(_v,this.widthMax);
       this.graph.setWidth(_v);
       this.navigation.setHandleWidth(_v, _center);
+      // console.log(this.graph.width/this.width*4);
     }
   }
   

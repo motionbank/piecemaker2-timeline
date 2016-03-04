@@ -268,7 +268,7 @@ function TimelineGraph( _timelineComponent, _markerData ) {
           // both visible and same row
           if ( _marker.isVisible() && m.isVisible() && m.row === row ) {
             // end target > start this
-            if ( bTarget.right + this.absToRel(1) > bThis.left ) {
+            if ( bTarget.right/* + this.absToRel(1)*/ > bThis.left ) {
               row++;
               changed = true;
             }
