@@ -14,7 +14,6 @@ function AddMarkerControls() {
   this.titleFields = {};
   this.isFocused = false;
   
-  
   this.el.append(
     '<div class="header">New Event <span class="close-add-marker hidden">Close</span></div>',
     '<div class="spacer"></div>',
@@ -63,119 +62,64 @@ function AddMarkerControls() {
   // );
 
 
-  // marker type buttons
-  var _i = 0;
-  $.map(GLOBAL.annotationConfig.markerTypes, function(v, key) {
+  this.init = function () {
+    // marker type buttons
+    var _i = 0;
+    $.map(GLOBAL.annotationConfig.markerTypes, function(_prop, _type) {
+    
+      if (!_prop.no_create) {
+        var b = $('<div class="button button-toggle type-' + _type + '" data-type="' + _type + '">' + _type.toProperCase() + '</div>');
 
-    var b = $('<div class="button button-toggle type-' + key + '" data-type="' + key + '">' + key.toProperCase() + '</div>');
+        var inputTemplate = self.defaultTemplate.clone();
+        inputTemplate.find(".marker-label").addClass("type-" + _type + "-background");
+        inputTemplate.find(".marker-description").addClass("type-" + _type + "-background");
 
-    var inputTemplate = self.defaultTemplate.clone();
-    inputTemplate.find(".marker-label").addClass("type-" + key + "-background");
-    inputTemplate.find(".marker-description").addClass("type-" + key + "-background");
+        if (_prop.addMarkerConfig) {
 
-    if (v.addMarkerConfig) {
-
-      // has custom template
-      if (v.addMarkerConfig.template) {
-        var customTemplate = $('<div class="input-template label-list-template"></div>');
-        customTemplate.append(
-          '<div class="spacer"></div>',
-          '<label for="">Label</label>',
-          self.inputLabel.clone().addClass("type-" + key + "-background"),
-          '<div class="spacer"></div>',
-          '<label for="">Description</label>',
-          self.inputDescription.clone().addClass("type-" + key + "-background"),
-          '<div class="spacer"></div>'
-        );
-
-        // has custom pre configured label list
-        if (labelList = v.addMarkerConfig.labelList) {
-
-          var templateClass = key + "-label-list";
-
-          // button attribute holds class selector for the custom template
-          b.attr("data-label-list-template", "." + templateClass);
-
-          // create custom template. all must have class custom-template
-          var template = $('<div class="popup-template custom-template hidden"><label for="">Labels</label></div>').addClass(templateClass);
-          template.append('<div class="section-container label-container"></div>');
-          
-          template.mouseenter(function(event) {
-            $(this).addClass("is-focused");
-          });
-          
-          template.mouseleave(function(event) {
-            $(this).removeClass("is-focused");
-          });
-
-          for (var i = 0; i < labelList.length; i++) {
-            var text = labelList[i].value;
-            var l = $('<div class="button button-numbered"><span>' + (i + 1) + '</span><pre>' + text + '</pre></div>');
-            l.addClass("type-" + key);
-            var inputTarget = "marker-label";
-            l.attr("data-input-target-name", "marker-label");
-            l.attr("data-value", text);
-            l.attr("data-fields", JSON.stringify(labelList[i].fields));
-
-            // write data-value to target input val
-            l.click(function(event) {
-              // get input
-              customTemplate.find('[name="' + inputTarget + '"]')
-                .val($(this).data("value"))
-                .attr("data-fields", JSON.stringify($(this).data("fields")));
-              template.addClass("hidden");
-            });
-            template.find(".label-container").append(l);
+          // has custom template
+          if (_prop.addMarkerConfig.template) {
+            inputTemplate = self.getTemplate[_prop.addMarkerConfig.template]( _type, _prop, b);
           }
-          customTemplate.append(template);
         }
+        inputTemplate.addClass(_type + "-template");
 
-        customTemplate.find('textarea.marker-label').click(function(event) {
-          $(this).blur();
-          template.removeClass("hidden");
+        // every type button has its own input template
+        self.templateContainer.append(inputTemplate);
+
+        // if (_i===0) b.addClass("active");
+
+        // events
+        b.click(function(event) {
+
+          self.el.find(".popup-template").addClass("hidden");
+
+          // show add button and close
+          self.el.find('.close-add-marker').removeClass("hidden");
+          self.btnAddRange.removeClass("hidden");
+          self.btnAddPoint.removeClass("hidden");
+
+          // hide all button related custom templates
+          self.el.find(".input-template").removeClass("active");
+          self.el.find("." + _type + "-template").addClass("active");
+
+          var btn = $(this);
+          // set active state. radio button like.
+          self.typeContainer.find(".button").removeClass("active");
+          btn.addClass("active");
+
+          // look for custom templates
+          // if (labelList = btn.data("label-list-template")) {
+          //   self.el.find(labelList).removeClass("hidden");
+          //   console.log(labelList);
+          // }
         });
 
-        // replace default template for this type
-        inputTemplate = customTemplate;
+        // add el
+        self.typeContainer.append(b);
+        _i++;
       }
-    }
-    inputTemplate.addClass(key + "-template");
-
-    // every type button has its own input template
-    self.templateContainer.append(inputTemplate);
-
-    // if (_i===0) b.addClass("active");
-
-    // events
-    b.click(function(event) {
-
-      self.el.find(".popup-template").addClass("hidden");
-
-      // show add button and close
-      self.el.find('.close-add-marker').removeClass("hidden");
-      self.btnAddRange.removeClass("hidden");
-      self.btnAddPoint.removeClass("hidden");
-
-      // hide all button related custom templates
-      self.el.find(".input-template").removeClass("active");
-      self.el.find("." + key + "-template").addClass("active");
-
-      var btn = $(this);
-      // set active state. radio button like.
-      self.typeContainer.find(".button").removeClass("active");
-      btn.addClass("active");
-
-      // look for custom templates
-      // if (labelList = btn.data("label-list-template")) {
-      //   self.el.find(labelList).removeClass("hidden");
-      //   console.log(labelList);
-      // }
     });
-
-    // add el
-    self.typeContainer.append(b);
-    _i++;
-  });
+  }
 
 
   this.btnAddRange.click(function(event) {
@@ -257,4 +201,72 @@ function AddMarkerControls() {
       // self.el.find(".custom-template").addClass("hidden");
     }
   }
+  
+  this.getTemplate = {
+    
+    "labelList": function ( _type, _prop, _$targetButton ) {
+      
+      var customTemplate = $('<div class="input-template label-list-template"></div>');
+      customTemplate.append(
+        '<div class="spacer"></div>',
+        '<label for="">Label</label>',
+        self.inputLabel.clone().addClass("type-" + _type + "-background"),
+        '<div class="spacer"></div>',
+        '<label for="">Description</label>',
+        self.inputDescription.clone().addClass("type-" + _type + "-background"),
+        '<div class="spacer"></div>'
+      );
+
+      // has custom pre configured label list
+      if (labelList = _prop.addMarkerConfig.labelList) {
+
+        var templateClass = _type + "-label-list";
+
+        // button attribute holds class selector for the custom template
+        _$targetButton.attr("data-label-list-template", "." + templateClass);
+
+        // create custom template. all must have class custom-template
+        var template = $('<div class="popup-template custom-template hidden"><label for="">Labels</label></div>').addClass(templateClass);
+        template.append('<div class="section-container label-container"></div>');
+    
+        template.mouseenter(function(event) {
+          $(this).addClass("is-focused");
+        });
+    
+        template.mouseleave(function(event) {
+          $(this).removeClass("is-focused");
+        });
+
+        for (var i = 0; i < labelList.length; i++) {
+          var text = labelList[i].value;
+          var l = $('<div class="button button-numbered"><span>' + (i + 1) + '</span><pre>' + text + '</pre></div>');
+          l.addClass("type-" + _type);
+          var inputTarget = "marker-label";
+          l.attr("data-input-target-name", "marker-label");
+          l.attr("data-value", text);
+          l.attr("data-fields", JSON.stringify(labelList[i].fields));
+
+          // write data-value to target input val
+          l.click(function(event) {
+            // get input
+            customTemplate.find('[name="' + inputTarget + '"]')
+              .val($(this).data("value"))
+              .attr("data-fields", JSON.stringify($(this).data("fields")));
+            template.addClass("hidden");
+          });
+          template.find(".label-container").append(l);
+        }
+        customTemplate.append(template);
+      }
+
+      customTemplate.find('textarea.marker-label').click(function(event) {
+        $(this).blur();
+        template.removeClass("hidden");
+      });
+    
+      return customTemplate;
+    }
+  }
+  
+  this.init();
 }

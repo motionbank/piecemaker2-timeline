@@ -17,7 +17,8 @@ var GLOBAL = {
         color: "#ff4c3b"
       }, 
       "video": {
-        color: "#5b95fc"
+        color: "#5b95fc",
+        no_create: true
       }, 
       "data": {
         color: "#ffa188"
@@ -28,7 +29,7 @@ var GLOBAL = {
       "title": {
         color: "#60c458", 
         addMarkerConfig: {
-          template: "fixedLabelList",
+          template: "labelList",
           labelList: [] //randomTextArray( 30, true )
         }
       }, 
