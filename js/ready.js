@@ -238,6 +238,7 @@ jQuery( function ($) {
                 // console.log("\n\tDOC ------- mouse down");
                 app.timeline.mousedownHandler(event);
                 app.displayControls.mousedownHandler(event);
+                app.addMarkerControls.mousedownHandler(event);
             },
             'mousemove': function (event) {
                 // console.log("\n\tDOC ------- mouse move");
