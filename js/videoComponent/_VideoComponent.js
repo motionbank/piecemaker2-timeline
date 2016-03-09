@@ -2,7 +2,7 @@ function VideoComponent(_url) {
 
   var self = this;
   this.el = $('<div class="component video-component"><video id="annotator-video" src="' + _url + '" controls="controls" ></video></div>');
-  this.video = this.el.get(0);
+  this.video = this.el.find("video").get(0);
 
   this.updateInterval = null;
 
