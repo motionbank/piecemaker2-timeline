@@ -127,6 +127,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
       "mousedown":  function (event) {
         switch (event.which) {
           case 1: //left
+            GLOBAL.observer.selectMarker(that);
             break;
           case 2: //middle
             break;
@@ -553,7 +554,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   this.setDraggingState = function ( _state ) {
     this.draggingState = _state;
     this.parentGraph.dragMarker();
-    GLOBAL.observer.selectMarker(this);
+    // GLOBAL.observer.selectMarker(this);
     this.el.addClass("is-dragged");
     this.component.el.addClass("marker-dragging marker-" + _state + "-dragging");
   }
