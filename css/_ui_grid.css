@@ -1,0 +1,70 @@
+#app {
+  height: 100%;
+}
+
+/* grid */
+
+.ui-grid {
+  position: absolute;
+  /*width: 100%;*/
+  
+  overflow: hidden;
+  top: 3px;
+  right: 3px;
+  bottom: 3px;
+  left: 3px;
+/*  border-top: 1px solid rgba(0,0,0,0.2);
+  border-left: 1px solid rgba(0,0,0,0.2);*/
+}
+
+
+/* row */
+
+.ui-grid .ui-row {
+  width: 100%;
+  position: relative;
+}
+
+/*.ui-grid #ui-row-0 {
+  height: 60%;
+}
+
+.ui-grid #ui-row-1 {
+  height: 40%;
+}*/
+
+
+/* cell */
+
+.ui-grid .ui-cell {
+  position: relative;
+  height: 100%;
+  float: left;
+  padding: 3px;
+/*  border-right: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(0,0,0,0.2);*/
+}
+
+.ui-grid .ui-cell-content {
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+/*  border: 1px solid black;*/
+}
+
+/*.ui-grid #ui-cell-0 {
+  width: 20%;
+}
+
+.ui-grid #ui-cell-1 {
+  width: 60%;
+}
+
+.ui-grid #ui-cell-2 {
+  width: 20%;
+}
+
+.ui-grid #ui-cell-3 {
+  width: 100%;
+}*/
+

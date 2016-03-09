@@ -1,27 +1,28 @@
 .add-marker-controls {
-  position: fixed;
+/*  position: fixed;
   top: 60px;
-  left: 20px;
+  left: 20px;*/
   background: black;
   padding: 0 0 10px 0;
-  z-index: 100;
+/*  z-index: 100;*/
 }
 
 .add-marker-controls .header {
-  width: 290px;
+/*  width: 290px;*/
 }
 
-.add-marker-controls .template-container .input-template > input,
-.add-marker-controls .template-container .input-template > textarea,
-.add-marker-controls > * {
-  width: 280px;
+.add-marker-controls .template-container .input-template input,
+.add-marker-controls .template-container .input-template textarea/*,
+.add-marker-controls > **/{
+/*  width: 280px;*/
+  width: 100%;
 }
 
 .add-marker-controls .type-container,
 .add-marker-controls .button.submit,
 .add-marker-controls input[type="text"],
 .add-marker-controls textarea {
-  margin: 0 10px;
+/*  margin: 0 10px;*/
 }
 
 .add-marker-controls .type-container .button {

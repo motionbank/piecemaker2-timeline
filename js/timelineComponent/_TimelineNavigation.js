@@ -49,8 +49,9 @@ function TimelineNavigation( _timelineComponent ) {
   
   // scale scroll position relative to playhead position? how?
   this.setHandleWidth = function ( _v, _center ) {
-    var w = this.component.width;
-    var newWidth = w / _v;
+    // var w = this.component.width;
+    var newWidth = _v;
+    console.log("asdfasdf",_v,newWidth);
     var off = _center ? (newWidth - this.handleWidth)/2 : 0;
     this.handleWidth = newWidth;
     var pos = this.restrictPosition( this.handlePosition - off );
@@ -137,6 +138,7 @@ function TimelineNavigation( _timelineComponent ) {
     var pos = Math.max(relX, 0);
     var w = Math.max(relX - this.handlePosition, 0);
     var m = this.component.widthMax;
+    console.log(cw/(w*m) * m);
     this.component.setGraphWidth( cw/(w*m) * m );
   }
   

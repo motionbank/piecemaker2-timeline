@@ -142,7 +142,8 @@ function MarkerContextMenu( _timelineComponent ) {
       that.component.slider.value = parseInt(w);
       
       var p = that.marker.x - g.absToRel( that.component.width/2) + that.marker.length/2;
-      p = UTILS_restrict( p, 0, 1 - that.component.widthRelToGraph());
+      var max = UTILS_restrict(1 - that.component.widthRelToGraph(), 0, 1);
+      p = UTILS_restrict( p, 0, max);
       g.component.setScrollPosition(p);
       
       that.marker.afterChangeHandler();

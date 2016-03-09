@@ -62,7 +62,7 @@
 
 .control-component .header {
   color: #ddd;
-  padding: 9px 0 0 10px;
+  padding: 9px 10px 0 10px;
   line-height: 21px;
   font-weight: bold;
 }
@@ -107,6 +107,10 @@
   cursor: pointer;
   position: relative;
 /*  background-image: url(../img/icons/display_uncheck_30_30_02.png);*/
+}
+
+.control-component .button-inline {
+  display: inline-block;
 }
 
 .control-component .button pre {
@@ -205,17 +209,32 @@
   width: initial;
 }
 
-.control-component .custom-template {
-  position: absolute;
-  top: 41px;
-  right: -600px;
+.control-component .popup-template {
+  position: fixed;
+  top: 100px;
+  left: 50%;
   width: 600px;
-  max-height: 800px;
+  margin-left: -300px;
+/*  max-height: 800px;*/
+  bottom: 100px;
   overflow-y: scroll;
   background: black;
 /*  padding: 10px 10px 5px 10px;*/
   padding-bottom: 5px;
-  border-left: 1px solid #333;
+/*  border-left: 1px solid #333;*/
+  z-index: 100;
+  border: 1px solid #333;
+  -webkit-box-shadow: 0 0 20px rgba(0,0,0,0.8);
+     -moz-box-shadow: 0 0 20px rgba(0,0,0,0.8);
+          box-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+
+.control-component .input-block {
+  margin: 0 10px;
+}
+
+.control-component .input-block > * {
+/*  width: 100%;*/
 }
 
 .control-component .custom-template .section-container {

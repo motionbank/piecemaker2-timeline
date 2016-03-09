@@ -75,12 +75,7 @@ html body .timeline-component.navigation-handle-dragging * {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  position: absolute;
-  bottom: 0px;
-  left: 20px;
   width: 100%;
-  height: 350px;
-  height: 40vh;
   background: #404040;
   overflow-x: hidden;
   overflow-y: visible;

@@ -10,9 +10,19 @@ function AddMarkerControls() {
   this.templateContainer = $('<div class="template-container"></div>');
   this.btnAddPoint = $('<div class="button button-action submit hidden">Add point</div>');
   this.btnAddRange = $('<div class="button button-action submit hidden">Add range</div>');
+  this.$inputBlock = $('<div class="input-block"></div>');
 
   this.titleFields = {};
   this.isFocused = false;
+  
+  // list of els
+  this.createBlock = function () {
+    var block = this.$inputBlock.clone();
+    for (var i = 0; i < arguments.length; i++) {
+      block.append(arguments[i]);
+    }
+    return block;
+  }
   
   this.el.append(
     '<div class="header">New Event <span class="close-add-marker hidden">Close</span></div>',
@@ -20,9 +30,7 @@ function AddMarkerControls() {
     '<label for="">Type</label>',
     this.typeContainer,
     this.templateContainer,
-    this.btnAddPoint,
-    this.btnAddRange
-
+    this.createBlock( this.btnAddPoint, this.btnAddRange )
   );
 
   this.el.find('.close-add-marker').click(function(event) {
@@ -36,10 +44,10 @@ function AddMarkerControls() {
   this.defaultTemplate.append(
     '<div class="spacer"></div>',
     '<label for="">Label</label>',
-    this.inputLabel,
+    this.createBlock( this.inputLabel ),
     '<div class="spacer"></div>',
     '<label for="">Description</label>',
-    this.inputDescription,
+    this.createBlock( this.inputDescription ),
     '<div class="spacer"></div>'
   );
 
@@ -65,10 +73,13 @@ function AddMarkerControls() {
   this.init = function () {
     // marker type buttons
     var _i = 0;
+    
+    var block = self.$inputBlock.clone();
+    
     $.map(GLOBAL.annotationConfig.markerTypes, function(_prop, _type) {
     
       if (!_prop.no_create) {
-        var b = $('<div class="button button-toggle type-' + _type + '" data-type="' + _type + '">' + _type.toProperCase() + '</div>');
+        var b = $('<div class="button button-toggle button-inline type-' + _type + '" data-type="' + _type + '">' + _type.toProperCase() + '</div>');
 
         var inputTemplate = self.defaultTemplate.clone();
         inputTemplate.find(".marker-label").addClass("type-" + _type + "-background");
@@ -115,10 +126,12 @@ function AddMarkerControls() {
         });
 
         // add el
-        self.typeContainer.append(b);
+        block.append(b);
         _i++;
       }
     });
+    // block contains all create buttons
+    self.typeContainer.append(block);
   }
 
 
@@ -210,10 +223,10 @@ function AddMarkerControls() {
       customTemplate.append(
         '<div class="spacer"></div>',
         '<label for="">Label</label>',
-        self.inputLabel.clone().addClass("type-" + _type + "-background"),
+        self.createBlock( self.inputLabel.clone().addClass("type-" + _type + "-background") ),
         '<div class="spacer"></div>',
         '<label for="">Description</label>',
-        self.inputDescription.clone().addClass("type-" + _type + "-background"),
+        self.createBlock( self.inputDescription.clone().addClass("type-" + _type + "-background") ) ,
         '<div class="spacer"></div>'
       );
 

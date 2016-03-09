@@ -208,23 +208,22 @@ jQuery( function ($) {
         // all listeners have to implement setTimecode( _tc )
         GLOBAL.observer.addListener(app.timeline);
         GLOBAL.observer.addListener(app.displayControls);
-          GLOBAL.observer.addListener( app.video );
+        GLOBAL.observer.addListener( app.video );
 
-          $('body').append( 
-            app.timeline.el, 
-            app.displayControls.el, 
-            app.video.el, 
-            app.addMarkerControls.el 
-          );
+        $('#ui-cell-0 .ui-cell-content').append( app.addMarkerControls.el );
+        $('#ui-cell-1 .ui-cell-content').append( app.video.el );
+        $('#ui-cell-2 .ui-cell-content').append( app.displayControls.el );
+        $('#ui-cell-3 .ui-cell-content').append( app.timeline.el );
 
         // required
         cacheDimensions();
 
         // set component width
-        app.timeline.setWidth(GLOBAL.width - 40);
+        // app.timeline.setWidth(GLOBAL.width);
+        app.timeline.cacheDimensions();
 
         // set zoom
-        app.timeline.setGraphWidth(GLOBAL.width - 40);
+        app.timeline.setGraphWidth( app.timeline.width );
 
         // GLOBAL.observer.setTimecode() synchronizes the timecode of all objects
         // that were added as listeners to GLOBAL.observer via GLOBAL.observer.addListener()
@@ -271,13 +270,15 @@ jQuery( function ($) {
 
         function resizeHandler() {
             cacheDimensions();
-            app.timeline.setWidth(GLOBAL.width - 40);
+            // app.timeline.setWidth(GLOBAL.width - 40);
+            app.timeline.cacheDimensions();
         };
 
         // not used atm
         function resizeEndHandler() {
             cacheDimensions();
-            app.timeline.setWidth(GLOBAL.width - 40);
+            // app.timeline.setWidth(GLOBAL.width - 40);
+            app.timeline.cacheDimensions();
         };
 
         function cacheDimensions() {

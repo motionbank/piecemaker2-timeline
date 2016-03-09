@@ -14,6 +14,7 @@ function TimelineComponent( _markerData ) {
   this.el.append(this.graph.el, this.markerDetails.el,  this.markerContextMenu.el, this.navigation.el);
   
   this.width              = 0;
+  this.height             = 0;
   this.widthMax           = 130000;
   this.x                  = null;
   this.y                  = null;
@@ -42,6 +43,17 @@ function TimelineComponent( _markerData ) {
     this.y = this.el.offset().top;
   }
   
+  this.cacheDimensions = function () {
+    this.height = this.el.height();
+    this.width = this.el.width();
+    // this.el.css("width",this.width);
+    // this.slider.attr("min", _v);
+    this.graph.setTransition(false);
+    // this.graph.setScrollPosition(this.scrollPosition);
+    this.navigation.setHandleWidth( this.width/this.graph.width );
+    // this.setGraphWidth( this.graph.width );
+  }
+  
   // 0 - 1
   this.widthRelToGraph = function () {
     return this.width / this.graph.width;
@@ -54,7 +66,7 @@ function TimelineComponent( _markerData ) {
     this.slider.attr("min", _v);
     this.graph.setTransition(false);
     // this.graph.setScrollPosition(this.scrollPosition);
-    this.navigation.setHandleWidth( this.graph.width );
+    this.navigation.setHandleWidth( this.width/this.graph.width );
     // this.setGraphWidth( this.graph.width );
   }
   
@@ -63,7 +75,7 @@ function TimelineComponent( _markerData ) {
     if (_v>0) {
       _v = Math.min(_v,this.widthMax);
       this.graph.setWidth(_v);
-      this.navigation.setHandleWidth(_v, _center);
+      this.navigation.setHandleWidth(this.width/_v, _center);
       // console.log(this.graph.width/this.width*4);
     }
   }
