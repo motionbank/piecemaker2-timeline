@@ -42,8 +42,8 @@
 }
 
 .marker .background {
-  border-top: 7px solid #404040;
-  border-bottom: 7px solid #404040;
+  border-top: 8px solid #404040;
+  border-bottom: 8px solid #404040;
   border-left: 8px solid;
   border-right: 8px solid;
   transition-property: border-width;
@@ -64,7 +64,7 @@
   left: 9px;
   font-size: 13px;
   top: 0px;
-  line-height: 16px;
+  line-height: 18px;
   white-space: nowrap;
   pointer-events: none;
 /*  max-width: 70%;*/
@@ -144,8 +144,8 @@ marker in focus
   border-left: 8px solid ;
   border-right: 8px solid;*/
   
-  border-top: 7px solid;
-  border-bottom: 7px solid;
+  border-top: 8px solid;
+  border-bottom: 8px solid;
   border-left: 8px solid black;
   border-right: 8px solid black;
 
@@ -155,8 +155,8 @@ marker in focus
 }
 
 .timeline-graph .marker.is-selected .background{
-  border-top: 7px solid black;
-  border-bottom: 7px solid black;
+  border-top: 8px solid black;
+  border-bottom: 8px solid black;
   border-left: 8px solid ;
   border-right: 8px solid;
 }
@@ -170,16 +170,16 @@ marker in focus
 }
 
 .timeline-graph .marker.too-small:not(.is-point):hover .background {
-  border-top: 7px solid;
-  border-bottom: 7px solid;
+  border-top: 8px solid;
+  border-bottom: 8px solid;
   border-left: 2px solid black;
   border-right: 2px solid black;
   background: black;
 }
 
 .timeline-graph .marker.is-selected.too-small:not(.is-point) .background {
-  border-top: 7px solid black;
-  border-bottom: 7px solid black;
+  border-top: 8px solid black;
+  border-bottom: 8px solid black;
 }
 
 .timeline-graph .marker.too-small .label {
@@ -201,7 +201,7 @@ marker in focus
   border: 2px solid #404040;
   border-radius: 50%;
   margin-left: -8px;
-  width: 16px;
+  width: 18px;
 }
 
 .marker.is-on-screen .background {
@@ -209,7 +209,7 @@ marker in focus
 }
 
 .timeline-graph .marker.is-point:hover .background{
-  border: 3px solid black;
+  border: 2px solid black;
 }
 
 .marker.is-point .label{

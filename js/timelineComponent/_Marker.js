@@ -24,7 +24,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
   this.x                  = data.start/GLOBAL.duration;     // 0 - 1
   this.y                  = 0;                              // 0 - 1
   this.length             = (data.end-data.start)/GLOBAL.duration;  // 0 - 1
-  this.height             = 16;                             // px
+  this.height             = 18;                             // px
   this.row                = 0;
   this.id                 = _id;
   this.start              = data.start;                     // mill
@@ -322,7 +322,7 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     var max = ((this.parentGraph.width - this.length * this.parentGraph.width)/ this.parentGraph.width);
     var x = pos - this.impactPosition;
     
-    x = UTILS_restrict( x, 0, max);
+    x = UTILS.restrict( x, 0, max);
 
     if (GLOBAL.observer.shiftDown) {
       var time = x * GLOBAL.duration;
@@ -454,8 +454,8 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
       // bounds.left = this.x - borderWidth;
       // bounds.right = bounds.left + borderWidth*2;
       
-      bounds.left = this.x - tl.absToRel(this.component.graph.width/this.component.width*8);
-      bounds.right = bounds.left + tl.absToRel(this.component.graph.width/this.component.width*16);
+      bounds.left = this.x - tl.absToRel(this.component.graph.width/this.component.width*9);
+      bounds.right = bounds.left + tl.absToRel(this.component.graph.width/this.component.width*18);
     };
     return bounds;
   }
