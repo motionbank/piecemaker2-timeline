@@ -204,7 +204,7 @@ function TimelineNavigation( _timelineComponent ) {
       x = this.handlePosition + this.handleWidth/2;
     }
     this.cursorTimecode = Math.round( x * GLOBAL.duration );
-    var time = UTILS_getTimeFormatted( this.cursorTimecode ).total;
+    var time = UTILS.getTimeFormatted( this.cursorTimecode ).total;
     var lP = x;
     var lw = this.labelWidth/cw;
     if (lP + lw > 1) lP -= lw;

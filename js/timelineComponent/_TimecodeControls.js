@@ -18,7 +18,7 @@ function TimecodeControls( _timelineComponent, _timelineGraph ) {
   var w = r/GLOBAL.duration * 100;
   var n = GLOBAL.duration/r;
   for (var i = 0; i < n; i++) {
-    var t = UTILS_getTimeFormatted( i * r );
+    var t = UTILS.getTimeFormatted( i * r );
     var _w = ( i > n -1 ) ? 100 - i*r / GLOBAL.duration * 100 : w;
     var g = $('<div class="tc-grid-item"></div>').css("width",_w+"%");
     if (t.m==="00") {
@@ -60,7 +60,7 @@ function TimecodeControls( _timelineComponent, _timelineGraph ) {
   }
   
   this.setTimecode = function ( _tc ) {
-    // this.positionLabel.text( UTILS_getTimeFormatted( Math.round(_tc) ).total );
+    // this.positionLabel.text( UTILS.getTimeFormatted( Math.round(_tc) ).total );
   }
   
   this.updateTimecode = function ( _relPos ) {
@@ -106,7 +106,7 @@ function TimecodeControls( _timelineComponent, _timelineGraph ) {
       }
     }
     
-    time = UTILS_getTimeFormatted( Math.round(this.cursorTimecode) ).total;
+    time = UTILS.getTimeFormatted( Math.round(this.cursorTimecode) ).total;
     
     if (cP + this.labelWidth - this.parentGraph.position > this.component.width) cP -= this.labelWidth +1;
     

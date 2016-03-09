@@ -37,6 +37,26 @@ UTILS.tripleDigit = function( _n ) {
   return n;
 }
 
+UTILS.getTimeFormatted = function( _mill ) {
+  var v = _mill
+  var mil = UTILS.tripleDigit(v % 1000);
+  var sec = UTILS.doubleDigit(Math.floor(v/1000) % 60);
+  var min = UTILS.doubleDigit(Math.floor(v/1000/60) % 60);
+  var hou = UTILS.doubleDigit(Math.floor(v/1000/60/60) % 24);
+  
+  var time = hou + ":" + min + ":" + sec + ":" + mil;
+  
+  var obj = {
+    total: time,
+    ms: mil,
+    s: sec,
+    m: min,
+    h: hou
+  };
+  
+  return obj;
+}
+
 // http://www.abeautifulsite.net/parsing-urls-in-javascript/
 function parseURL(url) {
   var parser = document.createElement('a'),
@@ -76,24 +96,4 @@ function message( _text ) {
 String.prototype.toProperCase = function() {
   return this.toLowerCase().replace(/^(.)|\s(.)/g, 
          function($1) { return $1.toUpperCase(); });
-}
-
-function UTILS_getTimeFormatted( _mill ) {
-  var v = _mill
-  var mil = UTILS.tripleDigit(v % 1000);
-  var sec = UTILS.doubleDigit(Math.floor(v/1000) % 60);
-  var min = UTILS.doubleDigit(Math.floor(v/1000/60) % 60);
-  var hou = UTILS.doubleDigit(Math.floor(v/1000/60/60) % 24);
-  
-  var time = hou + ":" + min + ":" + sec + ":" + mil;
-  
-  var obj = {
-    total: time,
-    ms: mil,
-    s: sec,
-    m: min,
-    h: hou
-  };
-  
-  return obj;
 }
