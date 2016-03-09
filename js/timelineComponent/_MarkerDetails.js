@@ -36,7 +36,7 @@ function MarkerDetails( _timelineComponent )
   this.updatePositionX = function ( _x ) 
   {
     var w = this.width;
-    this.x = UTILS_restrict(_x - w/2, 0, this.component.width - w);
+    this.x = UTILS.restrict(_x - w/2, 0, this.component.width - w);
     this.y = this.component.y - this.height + 1;
     this.update();
   }
@@ -59,7 +59,7 @@ function MarkerDetails( _timelineComponent )
       var l = UTILS_getTimeFormatted( Math.round(this.marker.duration) ).total;
       // this.el.html( this.marker.type + "<br/>id " + this.marker.id + "<br/>start " + s + "<br/>end " + e + "<br/>duration " + l );
       this.label.html( this.marker.type.toProperCase() );
-      this.title.html( this.marker.title );
+      this.title.html( UTILS.formatString( this.marker.title ) );
       this.content.find(".row.start .value").html( s );
       this.content.find(".row.end .value").html( e );
       this.content.find(".row.duration .value").html( l );

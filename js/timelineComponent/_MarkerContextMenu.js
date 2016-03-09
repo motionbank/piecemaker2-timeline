@@ -64,7 +64,7 @@ function MarkerContextMenu( _timelineComponent ) {
     var x = event.pageX ;
     if (this.marker.isPoint) x = this.component.graph.positionToScreen( this.marker.x ) + this.component.x;
     var w = this.el.outerWidth();
-    this.x = UTILS_restrict(x - w/2, 0, GLOBAL.width - w);
+    this.x = UTILS.restrict(x - w/2, 0, GLOBAL.width - w);
     
     // this.y = $(event.currentTarget).offset().top - this.el.outerHeight() - 8;
     this.y = this.marker.el.offset().top - this.el.outerHeight() - 8;
@@ -137,13 +137,13 @@ function MarkerContextMenu( _timelineComponent ) {
       var l = that.marker.length;
       // scale graph width so that the marker fills the whole screen, if possible
       var w = that.component.width/(l*g.width) * g.width;
-      w = UTILS_restrict( w, 0, g.component.widthMax);
+      w = UTILS.restrict( w, 0, g.component.widthMax);
       that.component.setGraphWidth(w);
       that.component.slider.value = parseInt(w);
       
       var p = that.marker.x - g.absToRel( that.component.width/2) + that.marker.length/2;
-      var max = UTILS_restrict(1 - that.component.widthRelToGraph(), 0, 1);
-      p = UTILS_restrict( p, 0, max);
+      var max = UTILS.restrict(1 - that.component.widthRelToGraph(), 0, 1);
+      p = UTILS.restrict( p, 0, max);
       g.component.setScrollPosition(p);
       
       that.marker.afterChangeHandler();
@@ -172,7 +172,7 @@ function MarkerContextMenu( _timelineComponent ) {
     this.btn_toPoint.click(function(event) {
       var g = that.component.graph;
       var p = that.marker.x - g.absToRel( that.component.width/2 );
-      p = UTILS_restrict( p, 0, 1);
+      p = UTILS.restrict( p, 0, 1);
       g.component.ifNotOnScreenThenScrollTo( that.marker.x, true, "center" );
       that.marker.convertToPoint();
       that.afterChange(true);

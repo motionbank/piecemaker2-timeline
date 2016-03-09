@@ -101,7 +101,7 @@ function TimelineComponent( _markerData ) {
     this.graph.setTransition( _doTransition );
     
     // new pos should not exceed bounds
-    _p = UTILS_restrict(_p,0,1-w);
+    _p = UTILS.restrict(_p,0,1-w);
     this.scrollPosition = _p;
     this.graph.setScrollPosition( _p );
     this.navigation.setHandlePosition( _p );
@@ -258,7 +258,7 @@ function TimelineComponent( _markerData ) {
     // if (_align==="center") off = this.graph.absToRel( this.width/2 );
     // if (_align==="right") off = this.graph.absToRel( this.width );
     
-    // var p = UTILS_restrict( _p - off, 0, this.graph.absToRel( this.graph.width - this.width/2 ) );
+    // var p = UTILS.restrict( _p - off, 0, this.graph.absToRel( this.graph.width - this.width/2 ) );
             
     if ( !this.checkIfPointOnScreen( _p ) ) {
       // if (_doTransition) this.graph.setTransition(true);

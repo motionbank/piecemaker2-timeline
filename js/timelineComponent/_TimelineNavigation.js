@@ -60,7 +60,7 @@ function TimelineNavigation( _timelineComponent ) {
   
   this.setPlayheadPosition = function ( _p ) {
     this.playheadPosition = _p;
-    this.playhead.css("left", UTILS_p(_p));
+    this.playhead.css("left", UTILS.percent(_p));
   }
   
   this.setScrollPosition = function ( _p ) {
@@ -170,7 +170,7 @@ function TimelineNavigation( _timelineComponent ) {
   }
   
   this.restrictPosition = function ( _p ) {
-    return UTILS_restrict( _p, 0, 1 - this.handleWidth );
+    return UTILS.restrict( _p, 0, 1 - this.handleWidth );
   }
   
   this.setDraggingState = function ( _state ) {
@@ -209,9 +209,9 @@ function TimelineNavigation( _timelineComponent ) {
     var lw = this.labelWidth/cw;
     if (lP + lw > 1) lP -= lw;
     
-    this.positionLabel.css("left", UTILS_p(lP)).text(time);
+    this.positionLabel.css("left", UTILS.percent(lP)).text(time);
     this.cursorPosition = x;
-    this.cursor.css("left", UTILS_p(x));
+    this.cursor.css("left", UTILS.percent(x));
   }
   
   this.updateHandle = function () {

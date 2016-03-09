@@ -169,7 +169,7 @@ function TimelineGraph( _timelineComponent, _markerData ) {
     // _p is between 0 and 1
     // var p = _p * this.width;
     this.position = _p * this.width;
-    this.el.css("margin-left", UTILS_p(this.position/this.component.width * -1));
+    this.el.css("margin-left", UTILS.percent(this.position/this.component.width * -1));
     // this.positionHasChanged = true;
     for (var i = 0; i < this.markers.length; i++) {
       var m = this.markers[i];
@@ -430,7 +430,7 @@ function TimelineGraph( _timelineComponent, _markerData ) {
     this.setCursorPosition( cP );
     
     if (this.isDragged) {
-      var p = UTILS_restrict(this.impactPosition - x, 0, this.width - this.component.width);
+      var p = UTILS.restrict(this.impactPosition - x, 0, this.width - this.component.width);
       this.component.setScrollPosition( p / this.width );
     }
     

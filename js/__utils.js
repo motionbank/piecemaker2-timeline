@@ -8,6 +8,35 @@ Array.prototype.remove = function(from, to) {
   return this.push.apply(this, rest);
 };
 
+
+var UTILS  = {};
+
+UTILS.percent = function ( _p ) {
+  return (_p*100)+"%";
+}
+
+UTILS.restrict = function( _p, _min, _max ) {
+  return Math.min( Math.max( _p, _min ), _max );
+}
+
+// better name
+UTILS.formatString = function( _s ) {
+  // insert zero width space after "_"
+  var s = _s.replace(/_/g,"_&#x200b;");
+  return s;
+}
+
+UTILS.doubleDigit = function( _n ) {
+  return (_n<10) ? "0" + _n : _n.toString();
+}
+
+UTILS.tripleDigit = function( _n ) {
+  var n = _n.toString();
+  if (_n<10) n = "00" + n;
+  else if (_n<100) n = "0" + n;
+  return n;
+}
+
 // http://www.abeautifulsite.net/parsing-urls-in-javascript/
 function parseURL(url) {
   var parser = document.createElement('a'),
@@ -51,10 +80,10 @@ String.prototype.toProperCase = function() {
 
 function UTILS_getTimeFormatted( _mill ) {
   var v = _mill
-  var mil = tripleDigit(v % 1000);
-  var sec = doubleDigit(Math.floor(v/1000) % 60);
-  var min = doubleDigit(Math.floor(v/1000/60) % 60);
-  var hou = doubleDigit(Math.floor(v/1000/60/60) % 24);
+  var mil = UTILS.tripleDigit(v % 1000);
+  var sec = UTILS.doubleDigit(Math.floor(v/1000) % 60);
+  var min = UTILS.doubleDigit(Math.floor(v/1000/60) % 60);
+  var hou = UTILS.doubleDigit(Math.floor(v/1000/60/60) % 24);
   
   var time = hou + ":" + min + ":" + sec + ":" + mil;
   
@@ -67,24 +96,4 @@ function UTILS_getTimeFormatted( _mill ) {
   };
   
   return obj;
-}
-
-// 0 - 1
-function UTILS_p( _p ) {
-  return (_p*100)+"%";
-}
-
-function UTILS_restrict( _p, _min, _max ) {
-  return Math.min( Math.max( _p, _min ), _max );
-}
-
-function doubleDigit( _n ) {
-  return (_n<10) ? "0" + _n : _n.toString();
-}
-
-function tripleDigit( _n ) {
-  var n = _n.toString();
-  if (_n<10) n = "00" + n;
-  else if (_n<100) n = "0" + n;
-  return n;
 }

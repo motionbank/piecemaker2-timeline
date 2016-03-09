@@ -18,7 +18,6 @@ function TimecodeControls( _timelineComponent, _timelineGraph ) {
   var w = r/GLOBAL.duration * 100;
   var n = GLOBAL.duration/r;
   for (var i = 0; i < n; i++) {
-    // var min = doubleDigit(i % 60);
     var t = UTILS_getTimeFormatted( i * r );
     var _w = ( i > n -1 ) ? 100 - i*r / GLOBAL.duration * 100 : w;
     var g = $('<div class="tc-grid-item"></div>').css("width",_w+"%");
@@ -78,7 +77,7 @@ function TimecodeControls( _timelineComponent, _timelineGraph ) {
     }
     var pg = this.parentGraph;
     var ob = GLOBAL.observer;
-    var x = UTILS_restrict( this.component.locX(event.pageX), 0, this.component.width );
+    var x = UTILS.restrict( this.component.locX(event.pageX), 0, this.component.width );
     var relPos = pg.mapScreenPosition( x );
     var p = relPos;
     
