@@ -61,6 +61,15 @@ html body .transparent {
 /*  margin-top: -400px;*/
 }
 
+#toolbar {
+  position: fixed;
+  top: 6px;
+  left: 0px;
+  bottom: 6px;
+  width: 40px;
+  background: #404040;
+}
+
 .marker-context-menu,
 .marker-details {
   background: black;
