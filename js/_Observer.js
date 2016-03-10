@@ -14,6 +14,8 @@ function Observer( _app ) {
   this.shiftDown = false;
   this.spaceDown = false;
   this.selectedMarker = null;
+  this.isTyping = false;
+  
   var self = this;
   
   // in milliseconds
@@ -47,6 +49,7 @@ function Observer( _app ) {
   }
   
   this.unselectMarker = function ( _delay ) {
+    console.log("OBSERVER: unselect marker");
     if (this.selectedMarker) {
       this.selectedMarker.unselect(_delay);
       this.selectedMarker = null;
@@ -81,7 +84,7 @@ function Observer( _app ) {
         break;
       // i
       case 73: 
-        if (m = self.selectedMarker) {
+        if ( (m = self.selectedMarker) && !self.isTyping ) {
           m.setStart(self.getTimecode());
           m.afterChangeHandler();
           app.timeline.afterContentChangeHandler();
@@ -89,7 +92,7 @@ function Observer( _app ) {
         break;
       // o
       case 79: 
-        if (m = self.selectedMarker) {
+        if ( (m = self.selectedMarker) && !self.isTyping ) {
           m.setEnd(self.getTimecode());
           m.afterChangeHandler();
           app.timeline.afterContentChangeHandler();
@@ -98,11 +101,11 @@ function Observer( _app ) {
         
       // backspace
       case 8: 
-        // if (m = self.selectedMarker) {
-        //   event.preventDefault();
-        //   m.delete();
-        //   app.timeline.afterContentChangeHandler();
-        // }
+        if ( (m = self.selectedMarker) && !self.isTyping ) {
+          event.preventDefault();
+          m.delete();
+          app.timeline.afterContentChangeHandler();
+        }
         break;
     }
   }
