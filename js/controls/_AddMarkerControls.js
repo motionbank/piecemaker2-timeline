@@ -217,6 +217,12 @@ function AddMarkerControls() {
       fields: activeTemplate.find(".marker-label").data("fields") || {}
     }
     self.marker.updateData(data);
+    
+    // ugly fix
+    GLOBAL.observer.unselectMarker();
+    GLOBAL.observer.selectMarker(self.marker);
+    self.marker = null;
+    
     self.resetDisplay();
   });  
   
@@ -227,7 +233,7 @@ function AddMarkerControls() {
   
   this.resetDisplay = function () {
     self.isEditing = false;
-    this.el.find(".header .text").text("New Event");
+    self.el.find(".header .text").text("New Event");
     self.typeContainer.find(".marker-type-button").removeClass("hidden").removeClass("active");
     self.el.find('.close-add-marker').addClass("hidden");
     
