@@ -162,7 +162,12 @@ jQuery( function ($) {
                                 end: parseInt(e.duration > 0 ? (start + (e.duration * 1000)) : start, 10),
                                 label: e.fields.title || e.fields.description || 'Untitled',
                                 type: e.type,
-                                data: e
+                                data: e,
+                                fields: ( e.type === "title" ) ? {
+                                  "pbf-id": e.fields["pbf-id"] || "",
+                                  "pbf-title-id": e.fields["pbf-title-id"] || "",
+                                  "pbf-vorlage": e.fields["pbf-vorlage"] || "",
+                                } : null
                             });
                         });
 

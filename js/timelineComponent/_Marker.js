@@ -167,6 +167,18 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     this.updateOriginalData();
     this.calcLabelWidthMax();
   }
+  
+  // called after edit marker
+  this.updateData = function ( _data ) {
+    this.title = _data.label || this.title;
+    this.fields = _data.fields || this.fields;
+    this.description = _data.description || this.description;
+    
+    this.label.text( this.title );
+    this.calcLabelWidthMax();
+    
+    this.updateOriginalData();
+  }
 
   this.updateOriginalData = function () {
     console.log("MARKER: updateOriginalData");

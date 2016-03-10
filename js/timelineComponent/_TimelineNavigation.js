@@ -51,7 +51,6 @@ function TimelineNavigation( _timelineComponent ) {
   this.setHandleWidth = function ( _v, _center ) {
     // var w = this.component.width;
     var newWidth = _v;
-    console.log("asdfasdf",_v,newWidth);
     var off = _center ? (newWidth - this.handleWidth)/2 : 0;
     this.handleWidth = newWidth;
     var pos = this.restrictPosition( this.handlePosition - off );

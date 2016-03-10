@@ -22,6 +22,18 @@
   height: 30px;
 }
 
+.control-component .button-row-two .button-container {
+  width: 50%;
+  display: inline-block;
+}
+
+.control-component .button-row-two .button-container:first-child {
+  padding-right: 5px;
+}
+
+.control-component .button-row-two .button-container:last-child {
+  padding-left: 5px;
+}
 
 #controls {
   position: fixed;
@@ -95,9 +107,10 @@
   margin: 0 10px 1px;
   width: 280px;
   position: relative;
-  background-repeat: no-repeat;
 /*  background-image: url(../img/icons/display_uncheck_30_30_02.png);*/
 }
+
+
 
 .control-component .button {
   line-height: 20px;
@@ -106,6 +119,7 @@
   padding: 5px 10px 5px 10px;
   cursor: pointer;
   position: relative;
+  background-repeat: no-repeat !important;
 /*  background-image: url(../img/icons/display_uncheck_30_30_02.png);*/
 }
 
@@ -157,6 +171,14 @@
   background-image: url(../img/icons/display_check_30_30_02.png);
 /*  opacity: 1;
   color: #111;*/
+}
+
+.control-component .button-icon.save-edit {
+  background-image: url(../img/icons/display_check_30_30_02.png);
+}
+
+.control-component .button-icon.cancel-edit {
+  background-image: url(../img/icons/display_uncheck_30_30_02.png);
 }
 
 .control-component .spacer {
