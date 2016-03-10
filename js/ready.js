@@ -267,7 +267,14 @@ jQuery( function ($) {
                 GLOBAL.observer.keyupHandler(event);
             }
         });
-
+        
+        $('input[type="text"], textarea').on("focus", function (event) {
+          GLOBAL.observer.isTyping = true;
+        });
+        
+        $('input[type="text"], textarea').on("blur", function (event) {
+          GLOBAL.observer.isTyping = false;
+        });
 
         $(window).resize(function (event) {
             resizeHandler();
