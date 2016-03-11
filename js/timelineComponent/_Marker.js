@@ -187,17 +187,22 @@ function Marker( _timelineComponent, _timelineGraph, _id, _data ) {
     var template = GLOBAL.marker_data_template;
     if ( this.original_data.event_group_id ) {
       var data = this.original_data;
-      data.fields = $.extend(data.fields,{
+      var fields = $.extend(data.fields,self.fields);
+      fields = $.extend(fields,{
+        description: self.description,
+        title: self.title,
         'updated_by_user_id': GLOBAL.user.id,
         'context_event_update_id': template.fields.context_event_id,
         'context_event_update_type': template.fields.context_event_type
       });
       api.getEvent(data.event_group,data.id,function(evt){
-        api.updateEvent(evt.event_group,evt.id,{
+        var evtData = {
           utc_timestamp : GLOBAL.context_time + self.start,
           duration : self.duration / 1000.0,
-          token : evt.token
-        },function(evt2){
+          token : evt.token,
+          fields: fields
+        };
+        api.updateEvent(evt.event_group,evt.id,evtData,function(evt2){
           self.original_data = evt2;
         });
       });
