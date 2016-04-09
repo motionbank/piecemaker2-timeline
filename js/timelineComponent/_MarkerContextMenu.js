@@ -3,7 +3,7 @@ function MarkerContextMenu( _timelineComponent ) {
   this.el               = $('<div class="marker-context-menu"><div class="marker-context-pointer"></div></div>');
   this.label            = $('<div class="marker-popup-label marker-popup-tile"></div>');
   this.title            = $('<div class="marker-popup-title marker-popup-tile"></div>');
-  this.btn_focusOnTl    = $('<div class="marker-context-button focus-on-timeline">Show whole marker</div>');
+  this.btn_focusOnTl    = $('<div class="marker-context-button focus-on-timeline">Show whole event</div>');
   this.btn_startAtTc    = $('<div class="marker-context-button start-at-timecode">Set start to <span class="tc-text">timecode</span> <span class="shortcut">(i)</span>  <span class="context-icon">&#x21e4;</span></div>');
   this.btn_endAtTc      = $('<div class="marker-context-button end-at-timecode">Set end to <span class="tc-text">timecode</span> <span class="shortcut">(o)</span> <span class="context-icon">&#x21e5;</span></div>');
   this.btn_goToStart    = $('<div class="marker-context-button go-start-timeline">Move timecode to start</div>');
