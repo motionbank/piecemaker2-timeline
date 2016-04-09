@@ -165,7 +165,7 @@ function AddMarkerControls() {
       label: activeTemplate.find(".marker-label").val() || "Untitled",
       description: activeTemplate.find(".marker-description").val() || "",
       start: tc,
-      end: (_range) ? tc + 10000 : tc,
+      end: (_range) ? tc + app.timeline.graph.absToRel(50) * GLOBAL.duration : tc,
       type: this.typeContainer.find(".button.active").first().data("type") || "No_type",
       fields: activeTemplate.find(".marker-label").data("fields") || {}
     };
