@@ -4,12 +4,12 @@ function MarkerContextMenu( _timelineComponent ) {
   this.label            = $('<div class="marker-popup-label marker-popup-tile"></div>');
   this.title            = $('<div class="marker-popup-title marker-popup-tile"></div>');
   this.btn_focusOnTl    = $('<div class="marker-context-button focus-on-timeline">Show whole marker</div>');
-  this.btn_startAtTc    = $('<div class="marker-context-button start-at-timecode">Set start to <span class="tc-text">timecode</span>  <span class="context-icon">&#x21e4;</span></div>');
-  this.btn_endAtTc      = $('<div class="marker-context-button end-at-timecode">Set end to <span class="tc-text">timecode</span> <span class="context-icon">&#x21e5;</span></div>');
+  this.btn_startAtTc    = $('<div class="marker-context-button start-at-timecode">Set start to <span class="tc-text">timecode</span> <span class="shortcut">(i)</span>  <span class="context-icon">&#x21e4;</span></div>');
+  this.btn_endAtTc      = $('<div class="marker-context-button end-at-timecode">Set end to <span class="tc-text">timecode</span> <span class="shortcut">(o)</span> <span class="context-icon">&#x21e5;</span></div>');
   this.btn_goToStart    = $('<div class="marker-context-button go-start-timeline">Move timecode to start</div>');
   this.btn_goToEnd      = $('<div class="marker-context-button go-end-timeline">Move timecode to end</div>');
   this.btn_edit         = $('<div class="marker-context-button edit-marker">Edit</div>');
-  this.btn_delete       = $('<div class="marker-context-button delete-marker">Delete</div>');
+  this.btn_delete       = $('<div class="marker-context-button delete-marker">Delete <span class="shortcut">(backspace)</span></div>');
   this.btn_toPoint      = $('<div class="marker-context-button to-point-marker hidden">Convert to point <span class="context-icon">&#x2022;</span></div>');
   this.btn_expand       = $('<div class="marker-context-button expand-marker">Convert to duration <span class="context-icon">&#x27F7;</span></div>');
   this.divider          = $('<div class="divider"></div>');

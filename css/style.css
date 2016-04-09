@@ -107,7 +107,7 @@ html body .transparent {
   opacity: 0;
   top: 0;
   left: 0;
-  min-width: 240px;
+  min-width: 260px;
   max-width: 350px;
 /*  height: 186px;*/
   padding: 7px 0;
@@ -115,6 +115,10 @@ html body .transparent {
   pointer-events: none;
 /*  border: 1px solid #fff;*/
 /*  box-shadow: 0 0px 5px rgba(0,0,0,0.8);*/
+}
+
+.marker-context-menu span.shortcut {
+  color: #888;
 }
 
 .timeline-component.marker-context-open .marker-context-menu {

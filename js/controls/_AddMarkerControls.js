@@ -8,8 +8,8 @@ function AddMarkerControls() {
   this.inputIsPoint       = $('<input class="marker-is-point" type="checkbox" />');
   this.typeContainer      = $('<div class="type-container"></div>');
   this.templateContainer  = $('<div class="template-container"></div>');
-  this.btnAddPoint        = $('<div class="button-container"><div class="button button-action submit">Add point</div></div>');
-  this.btnAddRange        = $('<div class="button-container"><div class="button button-action submit">Add range</div></div>');
+  this.btnAddPoint        = $('<div class="button-container"><div class="button button-action submit">Add as point</div></div>');
+  this.btnAddRange        = $('<div class="button-container"><div class="button button-action submit">Add as duration</div></div>');
   this.$inputBlock        = $('<div class="input-block"></div>');
 
   this.$btnSaveEdit       = $('<div class="button-container"><div class="button button-action button-icon submit save-edit">Save</div></div>');
