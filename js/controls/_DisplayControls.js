@@ -5,8 +5,8 @@ function DisplayControls( _timelineComponent ) {
   this.btn_open         = $('<div class="controls-opener"><img src="img/icons/display_40_40_ddd.png" alt="" /></div>');
   this.btnContainer     = $('<div class="button-container"></div>');
   
-  this.btn_labels       = $('<div class="button button-icon button-action active marker-label-toggle">Show marker labels</div>');
-  this.btn_overlapping  = $('<div class="button button-icon button-action overlapping-toggle">Highlight overlapping markers</div>');
+  this.btn_labels       = $('<div class="button button-icon button-action active marker-label-toggle">Show event labels</div>');
+  this.btn_overlapping  = $('<div class="button button-icon button-action overlapping-toggle">Highlight overlapping events</div>');
   
   this.header           = $('<div class="header"></div>');
   this.spacer           = $('<div class="spacer"></div>');
@@ -47,7 +47,7 @@ function DisplayControls( _timelineComponent ) {
     this.btnContainer.append(this.header.clone().text("Display settings"));
     this.btnContainer.append(this.spacer.clone());
     
-    this.btnContainer.append(this.label.clone().text("Marker types"));
+    this.btnContainer.append(this.label.clone().text("Event types"));
     
     // buttons
     $.map(GLOBAL.markerTypes, function (v,k) {
