@@ -83,7 +83,7 @@ jQuery( function ($) {
     $.ajax({
         url: 'js/config/events.json',
         success: function (data) {
-          var obj = $.parseJSON(data);
+          var obj = data; //$.parseJSON(data);
             
             for (var i = 0; i < obj.length; i++) {
               var d = {
